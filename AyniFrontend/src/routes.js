@@ -1,6 +1,12 @@
+// import { element } from 'prop-types'
 import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
+
+const Cotizacion = React.lazy(() => import('./views/cotizacion/Index'))
+const Personal = React.lazy(() => import('./views/personal/Index'))
+const Usuario = React.lazy(() => import('./views/usuarios/Index'))
+
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
 const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
 
@@ -39,6 +45,11 @@ const Invoice = React.lazy(() => import('./views/apps/invoicing/Invoice'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+
+  {path: '/cotizacion', exact:true, name:'Cotización', element: Cotizacion},
+  {path: '/personal', exact:true, name:'Personal', element: Personal},
+  {path: '/usuarios', exact:true, name:'Usuarios', element: Usuario},
+
   { path: '/theme', name: 'Theme', element: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', element: Colors },
   { path: '/theme/typography', name: 'Typography', element: Typography },

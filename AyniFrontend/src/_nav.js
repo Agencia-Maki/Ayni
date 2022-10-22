@@ -12,8 +12,9 @@ import {
   cilSpeedometer,
   cilSpreadsheet,
   cilStar,
+  cilPlus,
 } from '@coreui/icons'
-import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
+import { CNavGroup, CNavGroupItems, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 const _nav = [
   {
@@ -25,6 +26,60 @@ const _nav = [
       color: 'info-gradient',
       text: 'NEW',
     },
+  },
+  {
+    component: CNavTitle,
+    name: 'Cotización'
+  },
+  {
+    component: CNavItem,
+    name: 'Listado de contizaciones',
+    to: '/cotizacion',
+    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Nueva contización',
+    to: '/cotizacion/nueva',
+    icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Editar cotazación',
+    to: '/cotizacion/editar',
+    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavTitle,
+    name: 'Personal'
+  },
+  {
+    component: CNavItem,
+    name: 'Listado del personal',
+    to: '/personal',
+    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Nueva ficha',
+    to: '/personal/nueva',
+    icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: 'Editar fichar',
+    to: '/personal/editar',
+    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavTitle,
+    name: 'Usuarios'
+  },
+  {
+    component: CNavItem,
+    name: 'Listado del usuarios',
+    to: '/usuarios',
+    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
   },
   {
     component: CNavTitle,
