@@ -1,0 +1,2 @@
+class LaboralExperience < ApplicationRecord
+end
