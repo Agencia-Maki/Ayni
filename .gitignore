@@ -1,0 +1,74 @@
+# GIT IGNORE FOR FRONTEND
+# dependencies
+AyniFrontend/node_modules
+AyniFrontend/package-lock.json
+AyniFrontend/yarn.lock
+
+# testing
+AyniFrontend/coverage
+
+# production
+AyniFrontend/build
+
+# misc
+AyniFrontend/.eslintcache
+AyniFrontend/.DS_Store
+AyniFrontend/.idea
+AyniFrontend/.env.local
+AyniFrontend/.env.development.local
+AyniFrontend/.env.test.local
+AyniFrontend/.env.production.local
+
+AyniFrontend/npm-debug.log*
+AyniFrontend/yarn-debug.log*
+AyniFrontend/yarn-error.log*
+
+# Numerous always-ignore extensions
+AyniFrontend/*.diff
+AyniFrontend/*.err
+AyniFrontend/*.log
+AyniFrontend/*.orig
+AyniFrontend/*.rej
+AyniFrontend/*.swo
+AyniFrontend/*.swp
+AyniFrontend/*.vi
+AyniFrontend/*.zip
+AyniFrontend/*~
+AyniFrontend/.env
+
+AyniFrontend/./vscode
+AyniFrontend/.vscode
+AyniFrontend/.vscode/*
+
+
+# GIT IGNORE FOR BACKEND
+
+# Ignore bundler config.
+AyniBackend/.bundle
+
+# Ignore all logfiles and tempfiles.
+AyniBackend/log/*
+AyniBackend/tmp/*
+AyniBackend/!/log/.keep
+AyniBackend/!/tmp/.keep
+
+# Ignore pidfiles, but keep the directory.
+AyniBackend/tmp/pids/*
+AyniBackend/!/tmp/pids/
+AyniBackend/!/tmp/pids/.keep
+
+# Ignore uploaded files in development.
+AyniBackend/storage/*
+AyniBackend/!/storage/.keep
+AyniBackend/tmp/storage/*
+AyniBackend/!/tmp/storage/
+AyniBackend/!/tmp/storage/.keep
+
+# Ignore master key for decrypting credentials and more.
+AyniBackend/config/master.key
+
+AyniBackend/.env
+
+AyniBackend/vscode
+AyniBackend/.vscode
+AyniBackend/.vscode/*
