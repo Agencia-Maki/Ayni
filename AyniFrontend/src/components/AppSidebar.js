@@ -18,14 +18,14 @@ import navigation from '../_nav'
 const AppSidebar = () => {
   const dispatch = useDispatch()
   const unfoldable = useSelector((state) => state.sidebarUnfoldable)
-  const sidebarShow = useSelector((state) => state.sidebarShow)
+  // const sidebarShow = useSelector((state) => state.sidebarShow)
 
   return (
     <CSidebar
       className="bg-dark-gradient"
       position="fixed"
       unfoldable={unfoldable}
-      visible={sidebarShow}
+      visible={true}
       onVisibleChange={(visible) => {
         dispatch({ type: 'set', sidebarShow: visible })
       }}
