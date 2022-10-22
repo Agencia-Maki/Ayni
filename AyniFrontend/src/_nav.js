@@ -4,16 +4,11 @@ import {
   cilBell,
   cilCalculator,
   cilCalendar,
-  cilChartPie,
-  cilCursor,
   cilDrop,
   cilEnvelopeOpen,
-  cilGrid,
   cilLayers,
-  cilMap,
   cilNotes,
   cilPencil,
-  cilPuzzle,
   cilSpeedometer,
   cilSpreadsheet,
   cilStar,
@@ -50,116 +45,6 @@ const _nav = [
   {
     component: CNavTitle,
     name: 'Components',
-  },
-  {
-    component: CNavGroup,
-    name: 'Base',
-    to: '/base',
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Accordion',
-        to: '/base/accordion',
-      },
-      {
-        component: CNavItem,
-        name: 'Breadcrumb',
-        to: '/base/breadcrumbs',
-      },
-      {
-        component: CNavItem,
-        name: 'Cards',
-        to: '/base/cards',
-      },
-      {
-        component: CNavItem,
-        name: 'Carousel',
-        to: '/base/carousels',
-      },
-      {
-        component: CNavItem,
-        name: 'Collapse',
-        to: '/base/collapses',
-      },
-      {
-        component: CNavItem,
-        name: 'List group',
-        to: '/base/list-groups',
-      },
-      {
-        component: CNavItem,
-        name: 'Navs & Tabs',
-        to: '/base/navs',
-      },
-      {
-        component: CNavItem,
-        name: 'Pagination',
-        to: '/base/paginations',
-      },
-      {
-        component: CNavItem,
-        name: 'Placeholders',
-        to: '/base/placeholders',
-      },
-      {
-        component: CNavItem,
-        name: 'Popovers',
-        to: '/base/popovers',
-      },
-      {
-        component: CNavItem,
-        name: 'Progress',
-        to: '/base/progress',
-      },
-      {
-        component: CNavItem,
-        name: 'Spinners',
-        to: '/base/spinners',
-      },
-      {
-        component: CNavItem,
-        name: 'Tables',
-        to: '/base/tables',
-      },
-      {
-        component: CNavItem,
-        name: 'Tooltips',
-        to: '/base/tooltips',
-      },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: 'Buttons',
-    to: '/buttons',
-    icon: <CIcon icon={cilCursor} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: 'Buttons',
-        to: '/buttons/buttons',
-      },
-      {
-        component: CNavItem,
-        name: 'Buttons groups',
-        to: '/buttons/button-groups',
-      },
-      {
-        component: CNavItem,
-        name: 'Dropdowns',
-        to: '/buttons/dropdowns',
-      },
-      {
-        component: CNavItem,
-        name: 'Loading Buttons',
-        to: '/buttons/loading-buttons',
-        badge: {
-          color: 'danger-gradient',
-          text: 'PRO',
-        },
-      },
-    ],
   },
   {
     component: CNavGroup,
@@ -308,16 +193,6 @@ const _nav = [
     },
   },
   {
-    component: CNavItem,
-    name: 'Smart Table',
-    icon: <CIcon icon={cilGrid} customClassName="nav-icon" />,
-    badge: {
-      color: 'danger-gradient',
-      text: 'PRO',
-    },
-    to: '/smart-table',
-  },
-  {
     component: CNavTitle,
     name: 'Plugins',
   },
@@ -330,22 +205,6 @@ const _nav = [
       text: 'PRO',
     },
     to: '/plugins/calendar',
-  },
-  {
-    component: CNavItem,
-    name: 'Charts',
-    icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
-    to: '/plugins/charts',
-  },
-  {
-    component: CNavItem,
-    name: 'Google Maps',
-    icon: <CIcon icon={cilMap} customClassName="nav-icon" />,
-    badge: {
-      color: 'danger-gradient',
-      text: 'PRO',
-    },
-    to: '/plugins/google-maps',
   },
   {
     component: CNavTitle,
