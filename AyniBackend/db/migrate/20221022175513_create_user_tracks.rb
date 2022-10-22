@@ -6,6 +6,8 @@ class CreateUserTracks < ActiveRecord::Migration[7.0]
       t.string :browser_data
       t.string :aud
       t.references :user, null: false, foreign_key: true
-    end    
+
+      t.timestamps
+    end
   end
 end

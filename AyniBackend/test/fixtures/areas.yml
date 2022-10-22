@@ -3,9 +3,7 @@
 one:
   name: MyString
   slug: MyString
-  area: one
 
 two:
   name: MyString
   slug: MyString
-  area: two

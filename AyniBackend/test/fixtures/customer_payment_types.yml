@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  slug: MyString
-  area: one
+  description: MyText
 
 two:
   name: MyString
-  slug: MyString
-  area: two
+  description: MyText

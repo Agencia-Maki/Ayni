@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  document_type: 1
+  full_name: MyString
+  full_address: MyString
+  contact_phone: MyString
+  payment_type_name: MyString
+  contry: MyString
+  contry_code: MyString
+  document_number: MyString
+  customer_payment_type: one
+  user: one
+
+two:
+  document_type: 1
+  full_name: MyString
+  full_address: MyString
+  contact_phone: MyString
+  payment_type_name: MyString
+  contry: MyString
+  contry_code: MyString
+  document_number: MyString
+  customer_payment_type: two
+  user: two
