@@ -1,4 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import {
+  faGaugeHigh,
+  faFileSignature,
+  faUserAstronaut,
+  faClipboardUser,
+  faMeteor,
+  faMedal,
+  faUsersViewfinder,
+  faUsersGear,
+  faHandshake,
+  faGhost,
+  faListCheck,
+  faClipboardList,
+  faLaptopFile,
+  faFileContract,
+  faPeopleArrows,
+  faPeopleGroup,
+  faNetworkWired,
+  faRocket
+} from '@fortawesome/free-solid-svg-icons'
+
 import CIcon from '@coreui/icons-react'
 import {
   cilBell,
@@ -21,33 +44,71 @@ const _nav = [
     component: CNavItem,
     name: 'Dashboard',
     to: '/dashboard',
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: <FontAwesomeIcon icon={faGaugeHigh} inverse className="me-4 ms-1" size='lg' />,
     badge: {
       color: 'info-gradient',
-      text: 'NEW',
+      text: 'MAKI',
     },
   },
   {
     component: CNavTitle,
-    name: 'Cotización'
+    name: 'Área de Ventas'
   },
   {
     component: CNavItem,
-    name: 'Listado de contizaciones',
-    to: '/cotizacion',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    name: 'Clientes',
+    to: '/clientes',
+    icon: <FontAwesomeIcon icon={faPeopleGroup} inverse className="me-3 ms-1" size='lg' />,
+  },
+  {
+    component: CNavGroup,
+    name: 'Cotizaciones',
+    icon: <FontAwesomeIcon icon={faListCheck} inverse className="me-4 ms-1" size='lg' />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'General',
+        to: '/cotizaciones/general',
+      },
+      {
+        component: CNavItem,
+        name: 'Por ejecutivo',
+        to: '/cotizaciones/ejecutivos',
+      }
+    ],
   },
   {
     component: CNavItem,
-    name: 'Nueva contización',
-    to: '/cotizacion/nueva',
-    icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+    name: 'Órdenes de Trabajo',
+    to: '/ordenes-trabajo',
+    icon: <FontAwesomeIcon icon={faLaptopFile} inverse className="me-3 ms-1" size='lg' />,
+  },
+  {
+    component: CNavTitle,
+    name: 'Área de Producción'
+  },
+  {
+    component: CNavGroup,
+    name: 'Pendientes',
+    icon: <FontAwesomeIcon icon={faClipboardList} inverse className="me-4 ms-1" size='lg' />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'General',
+        to: '/cotizaciones/general',
+      },
+      {
+        component: CNavItem,
+        name: 'Por colaborador',
+        to: '/cotizaciones/ejecutivos',
+      }
+    ],
   },
   {
     component: CNavItem,
-    name: 'Editar cotazación',
-    to: '/cotizacion/editar',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    name: 'Órdenes de Trabajo',
+    to: '/ordenes-trabajo',
+    icon: <FontAwesomeIcon icon={faLaptopFile} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavTitle,
@@ -55,31 +116,37 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Listado del personal',
-    to: '/personal',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    name: 'Fichas del Personal',
+    to: '/fichas',
+    icon: <FontAwesomeIcon icon={faFileContract} inverse className="me-4 ms-1" size='lg' />,
   },
   {
     component: CNavItem,
-    name: 'Nueva ficha',
-    to: '/personal/nueva',
-    icon: <CIcon icon={cilPlus} customClassName="nav-icon" />,
+    name: 'Contratos',
+    to: '/contratos',
+    icon: <FontAwesomeIcon icon={faHandshake} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavItem,
-    name: 'Editar fichar',
-    to: '/personal/editar',
-    icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
+    name: 'Usuarios',
+    to: '/usuarios',
+    icon: <FontAwesomeIcon icon={faUsersGear} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavTitle,
-    name: 'Usuarios'
+    name: 'Configuracion del Sistema'
   },
   {
     component: CNavItem,
-    name: 'Listado del usuarios',
-    to: '/usuarios',
-    icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
+    name: 'Áreas',
+    to: '/areas',
+    icon: <FontAwesomeIcon icon={faNetworkWired} inverse className="me-3 ms-1" size='lg' />,
+  },
+  {
+    component: CNavItem,
+    name: 'Roles y Permisos',
+    to: '/roles',
+    icon: <FontAwesomeIcon icon={faRocket} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavTitle,

@@ -3,6 +3,10 @@ import React from 'react'
 
 const Dashboard = React.lazy(() => import('./views/dashboard/Dashboard'))
 
+const Clientes = React.lazy(() => import('./views/clientes/Clientes'))
+
+
+
 const Cotizacion = React.lazy(() => import('./views/cotizacion/Index'))
 const Personal = React.lazy(() => import('./views/personal/Index'))
 const Usuario = React.lazy(() => import('./views/usuarios/Index'))
@@ -45,6 +49,7 @@ const Invoice = React.lazy(() => import('./views/apps/invoicing/Invoice'))
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   { path: '/dashboard', name: 'Dashboard', element: Dashboard },
+  { path: '/clientes', name: 'Clientes', element: Clientes },
 
   {path: '/cotizacion', exact:true, name:'Cotización', element: Cotizacion},
   {path: '/personal', exact:true, name:'Personal', element: Personal},
