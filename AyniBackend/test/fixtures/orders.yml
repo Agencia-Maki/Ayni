@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_code: MyString
+  customer_name: MyString
+  amount_without_igv: 9.99
+  total_amount: 9.99
+  validity_date: MyString
+  delivery_at: 2022-10-22
+  reference_body: MyString
+  user: one
+  customer: one
+
+two:
+  order_code: MyString
+  customer_name: MyString
+  amount_without_igv: 9.99
+  total_amount: 9.99
+  validity_date: MyString
+  delivery_at: 2022-10-22
+  reference_body: MyString
+  user: two
+  customer: two

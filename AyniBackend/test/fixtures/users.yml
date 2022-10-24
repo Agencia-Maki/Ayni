@@ -4,10 +4,8 @@ one:
   full_name: MyString
   document_number: MyString
   password_digest: MyString
-  rol: one
 
 two:
   full_name: MyString
   document_number: MyString
   password_digest: MyString
-  rol: two
