@@ -137,19 +137,16 @@ const Table = () => {
   return (
     <>
       <CCard
-        className={"border border-primary"}
-        // className={`mb-3 border-primary`}
-        // style={{ "border-radius: 18rem" }}
+        className={"mb-3 border-primary"}
+        // style={{ maxWidth: '18rem' }}
       >
         <CCardBody>
-          <CCardHeader style={{backgroundColor: "#3399ff"}} >
-            <CCardTitle>Listado de clientes</CCardTitle>
+          <CCardHeader>
+            <CCardTitle>Listado de Usuarios</CCardTitle>
             {/* <CButton className="text-end" style={{width: '18rem'}} > Editar Cotización </CButton> */}
           </CCardHeader>
         
           <CCardText >
-            <CButton className="float-end">Nueva Cotización</CButton>
-            <CButton className="float-end">Editar Cotización</CButton>
             <CSmartTable
                 tableFilter
                 cleaner
@@ -224,6 +221,3 @@ const Table = () => {
 }
 
 export default Table
-
-
-

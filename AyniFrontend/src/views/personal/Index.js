@@ -1,9 +1,12 @@
 import React from "react";
+import Table from "./Table";
 
 const Index  = () => {
 
   return (
-    <h1>hola estas en index de personal</h1>
+    <>
+    <Table/>
+    </>
   )
 }
 
