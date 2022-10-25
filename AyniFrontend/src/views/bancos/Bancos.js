@@ -54,8 +54,8 @@ const Bancos = () => {
             <small>Panel de administración de </small> <strong>Bancos</strong> 
           </CCardHeader>
           <CCardBody>
-            <CButton color="info" className="float-end" onClick={ () => fun() }>
-              Registrar Nuevo Banco
+            <CButton color="success" className="float-end" onClick={ () => fun() }>
+              Crear Banco
             </CButton>
             <SmartTable 
               headerColums={headerColums}
