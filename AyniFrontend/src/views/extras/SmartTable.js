@@ -1,5 +1,10 @@
 import React, { useState } from 'react'
 import { CBadge, CButton, CCardBody, CCollapse, CSmartTable } from '@coreui/react-pro'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {
+  faTrash,
+  faPencil
+} from '@fortawesome/free-solid-svg-icons'
 
 import data from './_data.js'
 
@@ -10,20 +15,6 @@ const SmartTable = (props) => {
 
   const [details, setDetails] = useState([])
 
-  // const getBadge = (status) => {
-  //   switch (status) {
-  //     case 'Active':
-  //       return 'success'
-  //     case 'Inactive':
-  //       return 'secondary'
-  //     case 'Pending':
-  //       return 'warning'
-  //     case 'Banned':
-  //       return 'danger'
-  //     default:
-  //       return 'primary'
-  //   }
-  // }
   // const toggleDetails = (index) => {
   //   const position = details.indexOf(index)
   //   let newDetails = details.slice()
@@ -61,11 +52,7 @@ const SmartTable = (props) => {
         'align': 'end'
       }}
       scopedColumns={{
-        // status: (item) => (
-        //   <td>
-        //     <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
-        //   </td>
-        // ),
+        
         // show_details: (item) => {
         //   return (
         //     <td className="py-2">
@@ -83,22 +70,19 @@ const SmartTable = (props) => {
         //     </td>
         //   )
         // },
-        details: (item) => {
+        action: (item) => {
           return (
-            <CCollapse visible={details.includes(item.id)}>
-              <CCardBody>
-                <h4>{item.username}</h4>
-                <p className="text-muted">User since: {item.registered}</p>
-                <CButton size="sm" color="info">
-                  User Settings
-                </CButton>
-                <CButton size="sm" color="danger" className="ml-1">
-                  Delete
-                </CButton>
-              </CCardBody>
-            </CCollapse>
+            <td>
+              <CButton size={'sm'} className='me-2'>
+                <FontAwesomeIcon icon={faPencil} inverse />
+              </CButton>
+
+              <CButton size={'sm'} color={'danger'}>
+                <FontAwesomeIcon icon={faTrash} inverse />
+              </CButton>
+            </td>
           )
-        },
+        }
       }}
     />
   )

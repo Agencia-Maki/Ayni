@@ -36,9 +36,9 @@ const Bancos = () => {
       sorter: false,
     },
     {
-      key: 'show_details',
+      key: 'action',
       label: 'Acciones',
-      _style: { width: '1%' },
+      // _style: { width: '1%' },
       filter: false,
       sorter: false,
     },
