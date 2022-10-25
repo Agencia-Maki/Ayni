@@ -7,6 +7,7 @@ import {
   CCardBody,
   CCard,
   CCardText,
+  CCardHeader,
   CCardTitle,
   CCardFooter
 } from '@coreui/react-pro'
@@ -36,7 +37,6 @@ const usersData = [
     registered: '2022/01/01',
     role: 'Member',
     status: 'Active',
-    _props: { color: 'primary', align: 'middle' },
   },
   {
     id: 2,
@@ -44,7 +44,6 @@ const usersData = [
     registered: '2022/02/07',
     role: 'Staff',
     status: 'Banned',
-    _cellProps: { all: { className: 'fw-semibold' }, name: { color: 'info' } },
   },
   { id: 3, name: 'Chetan Mohamed', registered: '2022/02/07', role: 'Admin', status: 'Inactive' },
   {
@@ -62,7 +61,6 @@ const usersData = [
     registered: '2022/02/07',
     role: 'Staff',
     status: 'Banned',
-    _props: { color: 'warning', align: 'middle' },
   },
   { id: 8, name: 'Quintin Ed', registered: '2022/02/07', role: 'Admin', status: 'Inactive' },
   { id: 9, name: 'Enéas Kwadwo', registered: '2022/03/19', role: 'Member', status: 'Pending' },
@@ -138,80 +136,85 @@ const Table = () => {
 
   return (
     <>
-
-      <CCard>
+      <CCard
+        className={"mb-3 border-primary"}
+        // style={{ maxWidth: '18rem' }}
+      >
         <CCardBody>
-          <CCardTitle>Listado de clientes </CCardTitle>
-          <CCardText>
-
-          <CSmartTable
-              activePage={3}
-              cleaner
-              clickableRows
-              columns={columns}
-              columnFilter
-              columnSorter
-              footer
-              items={usersData}
-              itemsPerPageSelect
-              itemsPerPage={5}
-              pagination
-              scopedColumns={{
-                status: (item) => (
-                  <td>
-                    <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
-                  </td>
-                ),
-                show_details: (item) => {
-                  return (
-                    <td className="py-2">
-                      <CButton
-                        color="primary"
-                        variant="outline"
-                        shape="square"
-                        size="sm"
-                        onClick={() => {
-                          toggleDetails(item._id)
-                        }}
-                      >
-                        {details.includes(item._id) ? 'Hide' : 'Show'}
-                      </CButton>
+          <CCardHeader>
+            <strong>Listado de clientes</strong>
+            {/* <CButton className="text-end" style={{width: '18rem'}} > Editar Cotización </CButton> */}
+          </CCardHeader>
+        
+          <CCardText >
+            <CButton className="text-end" style={{width: '18rem'}}> Nueva Cotización </CButton>
+            <CSmartTable
+                tableFilter
+                cleaner
+                clickableRows
+                columns={columns}
+                columnFilter
+                columnSorter
+                footer
+                items={usersData}
+                itemsPerPageSelect
+                itemsPerPage={5}
+                pagination
+                sorterValue={{ column: 'name', state: 'asc' }}
+                scopedColumns={{
+                  status: (item) => (
+                    <td>
+                      <CBadge color={getBadge(item.status)}>{item.status}</CBadge>
                     </td>
-                  )
-                },
-                details: (item) => {
-                  return (
-                    <CCollapse visible={details.includes(item._id)}>
-                      <CCardBody>
-                        <h4>{item.username}</h4>
-                        <p className="text-muted">User since: {item.registered}</p>
-                        <CButton size="sm" color="info">
-                          User Settings
+                  ),
+                  show_details: (item) => {
+                    return (
+                      <td className="py-2">
+                        <CButton
+                          color="primary"
+                          variant="outline"
+                          shape="square"
+                          size="sm"
+                          onClick={() => {
+                            toggleDetails(item._id)
+                          }}
+                        >
+                          {details.includes(item._id) ? 'Hide' : 'Show'}
                         </CButton>
-                        <CButton size="sm" color="danger" className="ml-1">
-                          Delete
-                        </CButton>
-                      </CCardBody>
-                    </CCollapse>
-                  )
-                },
-              }}
-              selectable
-              sorterValue={{ column: 'name', state: 'asc' }}
-              tableFilter
-              tableHeadProps={{
-                color: 'danger',
-              }}
-              tableProps={{
-                striped: true,
-                hover: true,
-              }}
-            />
-          </CCardText>
-        </CCardBody>
+                      </td>
+                    )
+                  },
+                  details: (item) => {
+                    return (
+                      <CCollapse visible={details.includes(item._id)}>
+                        <CCardBody>
+                          <h4>{item.username}</h4>
+                          <p className="text-muted">User since: {item.registered}</p>
+                          <CButton size="sm" color="info">
+                            User Settings
+                          </CButton>
+                          <CButton size="sm" color="danger" className="ml-1">
+                            Delete
+                          </CButton>
+                        </CCardBody>
+                      </CCollapse>
+                    )
+                  },
+                }}
+                
+                // tableHeadProps={{
+                //   color: 'danger',
+                // }}
+                // tableProps={{
+                //   striped: true,
+                //   hover: true,
+                // }}
+              />
+            </CCardText>
+          </CCardBody>
 
-        <CCardFooter className="text-medium-emphasis">
-          <CButton href="#">Go somewhere</CButton>
+        <CCardFooter className="text-end">
+          <CButton href="#">Go Dashboard</CButton>
         </CCardFooter>
       </CCard>
     </>
