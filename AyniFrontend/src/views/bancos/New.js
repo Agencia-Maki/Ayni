@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState, useRef } from "react"
 import {
   CButton,
   CModal,
@@ -14,16 +14,29 @@ import {
 const Modal = (props) => {
 
   const [validated, setValidated] = useState(false)
-  const handleSubmit = (event) => {
-    const form = event.currentTarget
+  const [sendData, setSendData] = useState(false) 
+  const formEl = useRef(null)
+
+  const checkValidation = (event) => {
+    const form = formEl.current
     if (form.checkValidity() === false) {
       event.preventDefault()
       event.stopPropagation()
+    } else {
+      setSendData(true)
     }
     setValidated(true)
   }
 
-  const {visible, setVisible} = props
+  const handleSubmit = (event) => {
+    checkValidation(event)
+    event.preventDefault()
+    if (sendData) {
+      alert("se ha validado y se esta enviando")
+    }
+  }
+
+  const { visible, setVisible } = props
   return (
     <>
       <CModal visible={visible} alignment="center" onClose={() => setVisible(false)}>
@@ -36,6 +49,7 @@ const Modal = (props) => {
             noValidate
             validated={validated}
             onSubmit={handleSubmit}
+            ref={formEl}
           >
             <CCol md={4}>
               <CFormInput
@@ -65,13 +79,16 @@ const Modal = (props) => {
               />
             </CCol>
 
-          <CButton color="primary" type="submit">
-            Crear Banco
-          </CButton>
+            {/* <CButton color="primary" type="submit">
+              Crear Banco
+            </CButton> */}
           </CForm>
 
         </CModalBody>
         <CModalFooter>
+          <CButton color="success" onClick={(e) => handleSubmit(e)}>
+            Crear
+          </CButton>
           <CButton color="secondary" onClick={() => setVisible(false)}>
             Cerrar
           </CButton>
