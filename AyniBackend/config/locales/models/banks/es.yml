@@ -1,0 +1,29 @@
+es:
+  activerecord:
+    models:
+      client:
+        one: 'Banco'
+        other: 'Bancos'
+    errors:
+      models:
+        client:
+          attributes:
+            name:
+              blank: 'es un campo obligatorio'
+            slug:
+              blank: 'es un campo obligatorio'
+      messages:
+        record_invalid: 'El banco no pudo ser guardado. Por favor, corrija los errores y vuelva a intentarlo.'
+    methods:
+      client:
+        create: 'registrado de manera exitosa!'
+        update: 'actualizado de manera exitosa!'
+        destroy: 'eliminado de manera exitosa!'
+    attributes:
+      client:
+        name: 'Los Nombre'
+        slug: 'La abreviatura'
+  general_errors:
+    create: 'Ocurrio un error al registrar el banco'
+    update: 'Ocurrio un error al actualizar el banco'
+    destroy: 'Ocurrio un error al eliminar el banco'
