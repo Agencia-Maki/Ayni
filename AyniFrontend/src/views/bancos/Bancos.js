@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {
   CButton,
   CCard,
@@ -9,9 +9,16 @@ import {
 } from '@coreui/react-pro'
 
 import SmartTable from '../extras/SmartTable'
+import New from "./New"
 
 const Bancos = () => {
 
+  const [visible, setVisible] = useState(false)
+
+  const fun = () => {
+    console.log("XD")
+    setVisible(true)
+  }
 
   const headerColums = [
     {
@@ -39,6 +46,7 @@ const Bancos = () => {
 
 
   return (
+    <>
     <CRow>
       <CCol xs={12}>
         <CCard className="mb-4">
@@ -46,7 +54,7 @@ const Bancos = () => {
             <small>Panel de administración de </small> <strong>Bancos</strong> 
           </CCardHeader>
           <CCardBody>
-            <CButton color="info" className="float-end">
+            <CButton color="info" className="float-end" onClick={ () => fun() }>
               Registrar Nuevo Banco
             </CButton>
             <SmartTable 
@@ -56,6 +64,11 @@ const Bancos = () => {
         </CCard>
       </CCol>
     </CRow>
+    <New
+      visible={visible}
+      setVisible={setVisible}
+    />
+    </>
   )
 }
 
