@@ -49,15 +49,15 @@ const AppHeader = () => {
         </CHeaderBrand>
         <CForm className="d-flex">
           <CInputGroup>
-            <CInputGroupText id="search-addon" className="bg-light border-0 px-1">
+            {/* <CInputGroupText id="search-addon" className="bg-light border-0 px-1">
               <CIcon icon={cilSearch} size="lg" className="my-1 mx-2 text-disabled" />
             </CInputGroupText>
             <CFormInput
               placeholder="Search..."
-              ariaLabel="Search"
+              aria-label="Search"
               ariaDescribedby="search-addon"
               className="bg-light border-0"
-            />
+            /> */}
           </CInputGroup>
         </CForm>
         <CHeaderNav className="ms-auto">

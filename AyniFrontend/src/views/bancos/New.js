@@ -14,32 +14,23 @@ import {
 const Modal = (props) => {
 
   const [validated, setValidated] = useState(false)
-  const [sendData, setSendData] = useState(false) 
-  const formEl = useRef(null)
-
-  const checkValidation = (event) => {
-    const form = formEl.current
-    if (form.checkValidity() === false) {
-      event.preventDefault()
-      event.stopPropagation()
-    } else {
-      setSendData(true)
-    }
-    setValidated(true)
-  }
+  const formRef = useRef(null)
 
   const handleSubmit = (event) => {
-    checkValidation(event)
-    event.preventDefault()
-    if (sendData) {
+    const form = formRef.current
+    if (form.checkValidity() === false) {
+      event.stopPropagation()
+    } else {
       alert("se ha validado y se esta enviando")
+      // aqui poner el usecrud para crear el banco
     }
+    setValidated(true)
   }
 
   const { visible, setVisible } = props
   return (
     <>
-      <CModal visible={visible} alignment="center" onClose={() => setVisible(false)}>
+      <CModal size="xl" visible={visible} alignment="center" onClose={() => setVisible(false)}>
         <CModalHeader>
           <CModalTitle>Crear Nuevo Banco</CModalTitle>
         </CModalHeader>
@@ -48,40 +39,26 @@ const Modal = (props) => {
           <CForm className="row g-3 needs-validation"
             noValidate
             validated={validated}
-            onSubmit={handleSubmit}
-            ref={formEl}
+            ref={formRef}
           >
-            <CCol md={4}>
+            <CCol>
               <CFormInput
                 type="text"
                 id="validationServer01"
                 label="Nombre del Banco"
-                feedback="Looks good!"
+                feedbackInvalid="Porfavor ingrese un nombre de Banco."
                 required
               />
             </CCol>
-            <CCol md={4}>
+            <CCol>
               <CFormInput
                 type="text"
                 id="validationServer02"
                 label="Abreviatura"
-                feedback="Looks good!"
+                feedbackInvalid="Porfavor ingrese una abreviatura de Banco (unico)."
                 required
               />
             </CCol>
-            <CCol md={4}>
-              <CFormInput
-                type="text"
-                id="validationServer03"
-                label="# de trabajadores"
-                feedback="Please provide a valid city."
-                required
-              />
-            </CCol>
-
-            {/* <CButton color="primary" type="submit">
-              Crear Banco
-            </CButton> */}
           </CForm>
 
         </CModalBody>
