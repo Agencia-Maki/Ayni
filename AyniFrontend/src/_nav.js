@@ -106,10 +106,21 @@ const _nav = [
     ],
   },
   {
-    component: CNavItem,
+    component: CNavGroup,
     name: 'Órdenes de Trabajo',
-    to: '/ordenes-trabajo',
-    icon: <FontAwesomeIcon icon={faLaptopFile} inverse className="me-3 ms-1" size='lg' />,
+    icon: <FontAwesomeIcon icon={faClipboardList} inverse className="me-4 ms-1" size='lg' />,
+    items: [
+      {
+        component: CNavItem,
+        name: 'General',
+        to: '/ordenes-trabajo/general',
+      },
+      {
+        component: CNavItem,
+        name: 'Por Ejecutivo',
+        to: '/ordenes-trabajo/ejecutivos',
+      }
+    ],
   },
   {
     component: CNavTitle,

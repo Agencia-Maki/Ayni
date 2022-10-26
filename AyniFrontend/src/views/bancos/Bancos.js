@@ -9,11 +9,13 @@ import {
 } from '@coreui/react-pro'
 
 import SmartTable from '../extras/SmartTable'
+import data_ from './data'
 import New from "./New"
 
 const Bancos = () => {
 
   const [visible, setVisible] = useState(false)
+  const data = data_
 
   const fun = () => {
     console.log("XD")
@@ -49,7 +51,7 @@ const Bancos = () => {
     <>
     <CRow>
       <CCol xs={12}>
-        <CCard className="mb-4">
+        <CCard className="mb-4 border border-primary">
           <CCardHeader>
             <small>Panel de administración de </small> <strong>Bancos</strong> 
           </CCardHeader>
@@ -58,6 +60,7 @@ const Bancos = () => {
               Crear Banco
             </CButton>
             <SmartTable 
+              data={data}
               headerColums={headerColums}
             />
           </CCardBody>
