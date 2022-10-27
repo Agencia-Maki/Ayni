@@ -7,12 +7,16 @@ import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
 import store from './store'
 
+import { ContextProvider } from './context/AuthContext'
+
 const container = document.getElementById('root')
 const root = createRoot(container)
 
 root.render(
   <Provider store={store}>
-    <App />
+    <ContextProvider value={500}>
+      <App />
+    </ContextProvider>
   </Provider>,
 )
 

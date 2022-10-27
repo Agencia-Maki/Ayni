@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   CButton,
   CCard,
@@ -11,39 +11,42 @@ import {
 import SmartTable from '../extras/SmartTable'
 import New from "./New"
 
+import useCrud from 'src/hooks/useCrud'
+
+const headerColums = [
+  {
+    key: 'name',
+    label: 'Nombre de Banco',
+  },
+  {
+    key: 'slug',
+    label: 'Abreviatura',
+  },
+  {
+    key: 'total_users',
+    label: '# de trabajadores',
+    filter: false,
+    sorter: false,
+  },
+  {
+    key: 'action',
+    label: 'Acciones',
+    filter: false,
+    sorter: false,
+  },
+]
+
 const Bancos = () => {
 
   const [visible, setVisible] = useState(false)
+  const [banks, setBanks] = useState([])
+
+  const { getModel: getBanksList } = useCrud('/api/v1/banks')
 
   const fun = () => {
     console.log("XD")
     setVisible(true)
   }
-
-  const headerColums = [
-    {
-      key: 'name',
-      label: 'Nombre de Banco',
-    },
-    {
-      key: 'slug',
-      label: 'Abreviatura',
-    },
-    {
-      key: 'total_users',
-      label: '# de trabajadores',
-      filter: false,
-      sorter: false,
-    },
-    {
-      key: 'action',
-      label: 'Acciones',
-      // _style: { width: '1%' },
-      filter: false,
-      sorter: false,
-    },
-  ]
-
 
   return (
     <>
@@ -55,7 +58,7 @@ const Bancos = () => {
           </CCardHeader>
           <CCardBody>
             <CButton color="success" className="float-end" onClick={ () => fun() }>
-              Crear Banco
+              Nuevo Banco
             </CButton>
             <SmartTable 
               headerColums={headerColums}
