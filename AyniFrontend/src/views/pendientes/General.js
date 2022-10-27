@@ -1,22 +1,33 @@
-import React, { useState , useEffect } from "react"
-import { 
-  CSmartTable,
-  CBadge,
+import React, { useState } from "react"
+import {
   CButton,
-  CCollapse,
-  CCardBody,
-  CCard,
-  CCardText,
-  CCardHeader,
-  CCardTitle,
-  CCardFooter
 } from '@coreui/react-pro'
+
+import Card from "./Card"
+import Form from "./Form"
 
 const Table = () => {
 
+  const [visible, setVisible] = useState(false)
+
+  const fun = () => {
+    console.log("XD")
+    setVisible(true)
+  }
+
   return (
     <>
-      <h1>estas en cotizacion</h1>
+
+      <CButton color="success" className="float-end" onClick={ () => fun() }>
+        Prueba
+      </CButton>
+      <Card
+        Form={Form} //formulario 
+        visible={visible}
+        setVisible={setVisible}
+      />
+      <h1>estas en cotizacion[!]</h1>
+
     </>
   )
 }
