@@ -1,27 +1,15 @@
-import React, { useState, useRef } from "react"
+import React from "react"
 import {
   CCol,
   CForm,
-  CFormInput,
-  CButton
+  CFormInput
 } from '@coreui/react-pro'
 
 
-const Form = () => {
+const Form = (props) => {
 
-  const [validated, setValidated] = useState(false)
-  const formRef = useRef(null)
-
-  const handleSubmit = (event) => {
-    const form = formRef.current
-    if (form.checkValidity() === false) {
-      event.stopPropagation()
-    } else {
-      alert("se ha validado y se esta enviando")
-      // aqui poner el usecrud para crear el banco
-    }
-    setValidated(true)
-  }
+  const {validated} = props
+  const {formRef} = props
 
   return(
     <>
@@ -52,11 +40,6 @@ const Form = () => {
           />
         </CCol>
       </CForm>
-
-      <CButton color="success" onClick={(e) => handleSubmit(e)}>
-            Crear[Form]
-      </CButton>
-
     </>
   )
 }
