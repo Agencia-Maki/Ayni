@@ -96,12 +96,12 @@ const _nav = [
       {
         component: CNavItem,
         name: 'General',
-        to: '/cotizaciones/general',
+        to: '/pendientes/general',
       },
       {
         component: CNavItem,
         name: 'Por colaborador',
-        to: '/cotizaciones/ejecutivos',
+        to: '/pendientes/ejecutivos',
       }
     ],
   },

@@ -16,7 +16,7 @@ const Table = () => {
 
   return (
     <>
-      <h1>estas en ordenes</h1>
+      <h1>estas en pendiente colaborador</h1>
     </>
   )
 }
