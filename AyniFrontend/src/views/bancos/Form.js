@@ -5,15 +5,14 @@ import {
   CFormInput
 } from '@coreui/react-pro'
 
-
-const Form = (props) => {
+const Modal = (props) => {
 
   const {validated} = props
   const {formRef} = props
 
-  return(
+  return (
     <>
-      <h1>Formulario Dinamico</h1>
+      <h1>Crear Nuevo Banco</h1>
 
       <CForm className="row g-3 needs-validation"
         noValidate
@@ -39,9 +38,9 @@ const Form = (props) => {
           />
         </CCol>
       </CForm>
+
     </>
   )
 }
 
-export default Form
-
+export default Modal

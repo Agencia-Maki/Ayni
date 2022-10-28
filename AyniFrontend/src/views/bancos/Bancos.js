@@ -1,25 +1,43 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {
   CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
-  CRow,
+  CRow
 } from '@coreui/react-pro'
 
 import SmartTable from '../extras/SmartTable'
 import data_ from './data'
-import New from "./New"
+
+import Card from "../extras/Card"
+import Form from "./Form"
+
 
 const Bancos = () => {
 
+
   const [visible, setVisible] = useState(false)
+  const [validated, setValidated] = useState(false)
+  const formRef = useRef(null)
+
   const data = data_
 
   const fun = () => {
     console.log("XD")
     setVisible(true)
+  }
+
+  const handleSubmit = (event) => {
+    const form = formRef.current
+    if (form.checkValidity() === false) {
+      event.stopPropagation()
+    } else {
+      alert("se ha validado y se esta enviando")
+      // aqui poner el usecrud para crear el banco
+    }
+    setValidated(true)
   }
 
   const headerColums = [
@@ -46,6 +64,10 @@ const Bancos = () => {
     },
   ]
 
+  function Title() {
+    return "Crear Nuevo Banco";
+  }
+
 
   return (
     <>
@@ -67,10 +89,16 @@ const Bancos = () => {
         </CCard>
       </CCol>
     </CRow>
-    <New
-      visible={visible}
-      setVisible={setVisible}
-    />
+    <Card
+        Form={Form} //formulario 
+        Title={Title}
+        visible={visible}
+        setVisible={setVisible}
+        formRef={formRef}
+        validated={validated}
+        setValidated={setValidated}
+        handleSubmit={handleSubmit}
+      />
     </>
   )
 }

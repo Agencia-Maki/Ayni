@@ -10,7 +10,7 @@ import {
 
 const Card = (props) => {
 
-  const {validated, setValidated, handleSubmit} = props
+  const {validated, setValidated, handleSubmit, Title} = props
   const { visible, setVisible } = props
 
   const {formRef} = props
@@ -20,7 +20,9 @@ const Card = (props) => {
       {console.log(formRef)}
       <CModal size="xl" visible={visible} alignment="center" onClose={() => setVisible(false)}>
         <CModalHeader>
-          <CModalTitle>Card [Estas en card]</CModalTitle>
+          <CModalTitle>
+              <Title/>
+          </CModalTitle>
         </CModalHeader>
         <CModalBody>
 

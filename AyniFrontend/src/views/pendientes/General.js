@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react"
 import {
-  CButton,
+  CButton
 } from '@coreui/react-pro'
 
-import Card from "./Card"
+import Card from "../extras/Card"
 import Form from "./Form"
 
 const Table = () => {
@@ -28,6 +28,10 @@ const Table = () => {
     setValidated(true)
   }
 
+  function Title() {
+    return "Crear Pendientes";
+  }
+
   return (
     <>
 
@@ -36,6 +40,7 @@ const Table = () => {
       </CButton>
       <Card
         Form={Form} //formulario 
+        Title={Title}
         visible={visible}
         setVisible={setVisible}
         formRef={formRef}
