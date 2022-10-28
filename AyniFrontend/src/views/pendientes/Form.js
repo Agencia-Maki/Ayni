@@ -13,7 +13,6 @@ const Form = (props) => {
 
   return(
     <>
-      <h1>Formulario Dinamico</h1>
 
       <CForm className="row g-3 needs-validation"
         noValidate

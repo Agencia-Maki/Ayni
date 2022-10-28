@@ -22,8 +22,6 @@ const Bancos = () => {
   const [validated, setValidated] = useState(false)
   const formRef = useRef(null)
 
-  const data = data_
-
   const fun = () => {
     console.log("XD")
     setVisible(true)
@@ -82,7 +80,7 @@ const Bancos = () => {
               Crear Banco
             </CButton>
             <SmartTable 
-              data={data}
+              data={data_}
               headerColums={headerColums}
             />
           </CCardBody>

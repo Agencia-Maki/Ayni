@@ -1,7 +1,15 @@
 import React, { useState, useRef } from "react"
 import {
-  CButton
+  CButton,
+  CCard,
+  CCardBody,
+  CCardHeader,
+  CCol,
+  CRow
 } from '@coreui/react-pro'
+
+import SmartTable from '../extras/SmartTable'
+import data_ from './data'
 
 import Card from "../extras/Card"
 import Form from "./Form"
@@ -28,12 +36,53 @@ const Table = () => {
     setValidated(true)
   }
 
+  const headerColums = [
+    {
+      key: 'name',
+      label: 'Nombre de Banco',
+    },
+    {
+      key: 'slug',
+      label: 'Abreviatura',
+    },
+    {
+      key: 'total_users',
+      label: '# de trabajadores',
+      sorter: false,
+    },
+    {
+      key: 'action',
+      label: 'Acciones',
+      // _style: { width: '1%' },
+      filter: false,
+      sorter: false,
+    },
+  ]
+
   function Title() {
     return "Crear Pendientes";
   }
 
   return (
     <>
+    <CRow>
+      <CCol xs={12}>
+          <CCard className="mb-4 border border-primary">
+          <CCardHeader>
+            <small>Panel de administración de </small> <strong>pendientes</strong> 
+          </CCardHeader>
+          <CCardBody>
+            <CButton color="success" className="float-end" onClick={ () => fun() }>
+              Crear Pendiente
+            </CButton>
+            <SmartTable 
+              data={data_}
+              headerColums={headerColums}
+            />
+          </CCardBody>
+        </CCard>
+      </CCol>
+    </CRow>
 
       <CButton color="success" className="float-end" onClick={ () => fun() }>
         Prueba
@@ -48,8 +97,6 @@ const Table = () => {
         setValidated={setValidated}
         handleSubmit={handleSubmit}
       />
-      <h1>estas en cotizacion[!]</h1>
-
     </>
   )
 }

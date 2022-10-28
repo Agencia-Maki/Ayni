@@ -12,8 +12,7 @@ const Modal = (props) => {
 
   return (
     <>
-      <h1>Crear Nuevo Banco</h1>
-
+    
       <CForm className="row g-3 needs-validation"
         noValidate
         validated={validated}
