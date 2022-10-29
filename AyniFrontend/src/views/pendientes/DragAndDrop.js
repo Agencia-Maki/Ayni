@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
   faTrash,
-  faPlus,
   faPencil,
   faCheck
 } from '@fortawesome/free-solid-svg-icons'
@@ -14,6 +13,7 @@ import {
   CButton,
   CCardHeader,
   CCardBody,
+  CCardFooter
 } from '@coreui/react-pro'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
@@ -89,36 +89,31 @@ const DragAndDrop = () => {
         >
         <CCardHeader>
           <CCol>
-            <td>
-              <CButton
-                type="button"
-                onClick={() => {
-                  setState([...state, []]);
-                }}
-              >
-                Crear nuevo grupo
-              </CButton>
-              <CButton
-                type="button"
-                onClick={() => {
-                  setState([...state, getItems(1)]);
-                }}
-              >
-                Crear item
-              </CButton>
-            </td>
+            <CButton type="button"
+              onClick={() => {
+                setState([...state, []]);
+              }}
+            >
+              Crear nuevo grupo
+            </CButton>
+            <CButton type="button"
+              onClick={() => {
+                setState([...state, getItems(1)]);
+              }}
+            >
+              Crear item
+            </CButton>
           </CCol>
         </CCardHeader>  
 
         <CCardBody>
-          <CCol
-          style={{ display: "flex" }}
-          >
+          <CCol style={{ display: "flex" }}>
             <DragDropContext onDragEnd={onDragEnd}>
               {state.map((el, ind) => (
                 <Droppable key={ind} droppableId={`${ind}`}>
                   {(provided, snapshot) => (
-                    <CCard
+                    <CCard 
+                      style={{ background: "#000000", minWidth: '7cm'}}
                       ref={provided.innerRef}
                       {...provided.droppableProps}
                     >
@@ -138,58 +133,47 @@ const DragAndDrop = () => {
                             >
                               <CCard
                                 style={{
-
-                              
                                   width: '6cm',
                                   height: '6cm',
-                                // maxHeight: '6cm',
-                                // background: '#000000',
-                              
                                   display: "flex",
                                   justifyContent: "space-around",
                                 }}
                               >
-                              <CCardHeader>
-                                {item.content}
-                              </CCardHeader>
-                              <CCardBody>
-                                <h5>
-                                  {item.time}
-                                </h5>
-                                <h5>
-                                  {item.estado}
-                                </h5>
-                                <td>
-
-                                  <CButton 
-                                  size={'sm'} 
-                                  color={'success'}
+                                <CCardHeader>
+                                  {item.content}
+                                </CCardHeader>
+                                <CCardBody>
+                                  <h5>
+                                    {item.time}
+                                  </h5>
+                                  <h5>
+                                    {item.estado}
+                                  </h5>
+                                </CCardBody>
+                                <CCardFooter style={{ margin: "auto"}}>
+                                  <CButton size={'sm'} color={'primary'}
+                                    className="me-2"
                                   >
                                     <FontAwesomeIcon icon={faPencil} inverse />
                                   </CButton>
-                                  <CButton 
-                                  size={'sm'} 
-                                  color={'primary'}
+                                  <CButton size={'sm'} color={'success'}
+                                  className="me-2"
                                   >
                                     <FontAwesomeIcon icon={faCheck} inverse />
                                   </CButton>
-
-                                  <CButton 
-                                  size={'sm'} 
-                                  color={'danger'}
-                                  onClick={() => {
-                                    const newState = [...state];
-                                    newState[ind].splice(index, 1);
-                                    setState(
-                                      newState.filter(group => group.length)
-                                    );
-                                  }}
+                                  <CButton size={'sm'} color={'danger'}
+                                    className="me-2"
+                                    onClick={() => {
+                                      const newState = [...state];
+                                      newState[ind].splice(index, 1);
+                                      setState(
+                                        newState.filter(group => group.length)
+                                      );
+                                    }}
                                   >
                                     <FontAwesomeIcon icon={faTrash} inverse />
                                   </CButton>
-                                  
-                                </td>
-                              </CCardBody>
+                                </CCardFooter>
                               </CCard>
                             </CCard>
                           )}
