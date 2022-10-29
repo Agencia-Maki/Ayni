@@ -7,7 +7,7 @@ const Bancos = React.lazy(() => import('./views/bancos/Bancos'))
 const CotizacionG = React.lazy(() => import('./views/cotizaciones/General'))
 const CotizacionE = React.lazy(() => import('./views/cotizaciones/Ejecutivo'))
 const OrdenesG = React.lazy(() => import('./views/pendientes/General'))
-const OrdenesE = React.lazy(() => import('./views/pendientes/Ejecutivo'))
+const OrdenesE = React.lazy(() => import('./views/pendientes/Colaborador'))
 
 const routes = [
   { path: '/', exact: true, name: 'Ayni' },

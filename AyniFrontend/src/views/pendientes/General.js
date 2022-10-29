@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react"
+import React from "react"
 import { 
   CSmartTable,
   CBadge,
@@ -12,11 +12,14 @@ import {
   CCardFooter
 } from '@coreui/react-pro'
 
+import DragAndDrop from "./DragAndDrop"
+
 const Table = () => {
 
   return (
     <>
       <h1>estas en pendientes general</h1>
+      <DragAndDrop/>
     </>
   )
 }
