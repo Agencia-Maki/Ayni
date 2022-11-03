@@ -5,7 +5,13 @@ class Api::V1::BanksController < ApplicationController
   def index
     banks = Bank.all
     render json: {
-      banks: banks
+      banks: banks.map do |bank| {
+        id: bank.id,
+        name: bank.name,
+        slug: bank.slug,
+        total_users: bank.personal_records.count
+      }
+      end
     }, status: :ok
   end
 

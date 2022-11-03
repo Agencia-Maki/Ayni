@@ -1,4 +1,5 @@
 class PersonalRecord < ApplicationRecord
+  belongs_to :bank
 
   enum gender: [:male, :female, :others]
   enum pension_system: [:registered, :unregistered]
