@@ -18,6 +18,21 @@ import {
   cilUserUnfollow,
 } from '@coreui/icons'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faBullhorn,
+  faCodeCompare,
+  faFileCircleCheck,
+  faFileCircleXmark,
+  faIdBadge,
+  faListCheck,
+  faMessage,
+  faPersonCircleCheck,
+  faPersonCircleXmark,
+  faRightFromBracket,
+  faUserPen,
+} from '@fortawesome/free-solid-svg-icons'
+
 const AppHeaderDropdownNotif = () => {
   const itemsCount = 5
   return (
@@ -25,59 +40,32 @@ const AppHeaderDropdownNotif = () => {
       <CDropdownToggle caret={false}>
         <span className="d-inline-block my-1 mx-2 position-relative">
           <CIcon icon={cilBell} size="lg" />
-          <CBadge color="danger" position="top-end" shape="rounded-circle" className="p-1">
-            <span className="visually-hidden">{itemsCount} new alerts</span>
+          <CBadge color="danger" position="top-end" className="p-1">
+            <span>{itemsCount}</span>
           </CBadge>
         </span>
       </CDropdownToggle>
       <CDropdownMenu className="pt-0">
         <CDropdownHeader className="bg-light dark:bg-white dark:bg-opacity-10">
-          <strong>You have {itemsCount} notifications</strong>
+          <strong>Tienes {itemsCount} notificaciones</strong>
         </CDropdownHeader>
         <CDropdownItem>
-          <CIcon icon={cilUserFollow} className="me-2 text-success" /> New user registered
+          <FontAwesomeIcon icon={faFileCircleCheck} className="me-2 text-success" /> Cotización Aprobada
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon icon={cilUserUnfollow} className="me-2 text-danger" /> User deleted
+          <FontAwesomeIcon icon={faFileCircleXmark} className="me-2 text-danger" /> Cotización Desaprobada
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon icon={cilChartPie} className="me-2 text-info" /> Sales report is ready
+          <FontAwesomeIcon icon={faPersonCircleCheck} className="me-2 text-success" /> Cliente Aprobado
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon icon={cilBasket} className="me-2 text-primary" /> New client
+          <FontAwesomeIcon icon={faPersonCircleXmark} className="me-2 text-danger" /> Cliente Desaprobado
         </CDropdownItem>
         <CDropdownItem>
-          <CIcon icon={cilSpeedometer} className="me-2 text-warning" /> Server overloaded
+          <FontAwesomeIcon icon={faCodeCompare} className="me-2 text-warning" /> Pendiente actualizado
         </CDropdownItem>
-        <CDropdownHeader className="bg-light dark:bg-white dark:bg-opacity-10">
-          <strong>Server</strong>
-        </CDropdownHeader>
-        <CDropdownItem className="d-block">
-          <div className="text-uppercase mb-1">
-            <small>
-              <b>CPU Usage</b>
-            </small>
-          </div>
-          <CProgress thin color="info-gradient" value={25} />
-          <small className="text-medium-emphasis">348 Processes. 1/4 Cores.</small>
-        </CDropdownItem>
-        <CDropdownItem className="d-block">
-          <div className="text-uppercase mb-1">
-            <small>
-              <b>Memory Usage</b>
-            </small>
-          </div>
-          <CProgress thin color="warning-gradient" value={70} />
-          <small className="text-medium-emphasis">11444GB/16384MB</small>
-        </CDropdownItem>
-        <CDropdownItem className="d-block">
-          <div className="text-uppercase mb-1">
-            <small>
-              <b>SSD 1 Usage</b>
-            </small>
-          </div>
-          <CProgress thin color="danger-gradient" value={90} />
-          <small className="text-medium-emphasis">243GB/256GB</small>
+        <CDropdownItem>
+         <FontAwesomeIcon icon={faBullhorn} className="me-2 text-info" /> Nuevo Anuncio
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

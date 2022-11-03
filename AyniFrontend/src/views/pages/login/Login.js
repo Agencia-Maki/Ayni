@@ -15,12 +15,12 @@ import {
 } from '@coreui/react-pro'
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser } from '@coreui/icons'
+import { ToastContainer } from 'react-toastify'
 
 const initialState = {
   login: '',
   password: ''
 }
-
 
 const Login = () => {
   const { state: ContextState, login: LoginUser } = useContext(AuthContext)
@@ -34,7 +34,6 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log(user)
     const { login, password } = user;
     LoginUser(login, password);
     setUser({
@@ -44,36 +43,38 @@ const Login = () => {
   }
 
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <div className="min-vh-100 d-flex flex-row align-items-center" style={{ background: '#181924' }}>
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md={8}>
             <CCardGroup>
-              <CCard className="p-4">
+              <CCard className="p-4" style={{ background: '#24252f' }}>
                 <CCardBody>
                   <CForm onSubmit={onSubmit}>
-                    <h1>Ingresar</h1>
-                    <p className="text-medium-emphasis">Ingresa tus credenciales</p>
+                    <h1 className="text-primary">Ingresar</h1>
+                    <p className="text-medium text-light">Ingresa tus credenciales</p>
                     <CInputGroup className="mb-3">
-                      <CInputGroupText>
+                      <CInputGroupText className="login-icon">
                         <CIcon icon={cilUser} />
                       </CInputGroupText>
                       <CFormInput 
-                        placeholder="login" 
+                        placeholder="DNI" 
                         autoComplete="login" 
-                        name="login" 
+                        name="login"
+                        className="login-form"
                         onChange={e => setUser({ ...user, login: e.target.value })} 
                         value={user.login}
                       />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
-                      <CInputGroupText>
+                      <CInputGroupText className="login-icon">
                         <CIcon icon={cilLockLocked} />
                       </CInputGroupText>
                       <CFormInput
                         type="password"
-                        placeholder="Password"
+                        placeholder="Contraseña"
                         name="password"
+                        className="login-form"
                         onChange={e => setUser({ ...user, password: e.target.value })}
                         value={user.password}
                       />
@@ -81,24 +82,24 @@ const Login = () => {
                     <CRow>
                       <CCol xs={6}>
                         <CButton color="primary" className="px-4" type='submit'>
-                          Login
+                          Ingresar
                         </CButton>
                       </CCol>
                       <CCol xs={6} className="text-right">
                         <CButton color="link" className="px-0">
-                          Forgot password?
+                          ¿Olvidaste tu contraseña?
                         </CButton>
                       </CCol>
                     </CRow>
                   </CForm>
                 </CCardBody>
               </CCard>
-              <CCard className="text-white py-5" style={{ width: '44%', backgroundColor: '#000'}}>
+              <CCard className="text-white py-5 d-none d-md-block d-sm-none" style={{ width: '44%', backgroundColor: '#6500FE'}}>
                 <CCardBody className="text-center">
                   <div>
                     <h2>AYNI</h2>
                     <p>
-                      Sistema de gestion de MAKI
+                    Sistema de gestión de procesos empresariales, desarrollado por la empresa MAKI.
                     </p>
                   </div>
                 </CCardBody>
@@ -107,9 +108,20 @@ const Login = () => {
           </CCol>
         </CRow>
       </CContainer>
-      {isLoginPending && <div>Please wait...</div>}
-      {isLoggedIn && <div>Success.</div>}
-      {loginError && <div>{loginError.message}</div>}
+      {/* {isLoginPending && <div>Please wait...</div>} */}
+      {/* {isLoggedIn && <div>Success.</div>} */}
+      {/* {loginError && <div>{loginError.message}</div>} */}
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

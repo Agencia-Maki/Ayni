@@ -2,7 +2,7 @@ import axios from 'axios'
 import dayjs from 'dayjs'
 import jwt_decode from "jwt-decode"
 
-let authTokens = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null
+let authTokens = localStorage.getItem('currentData') ? JSON.parse(localStorage.getItem('currentData')) : null
 
 const global_url_api = process.env.REACT_APP_API_URL
 
@@ -15,7 +15,7 @@ const AxiosInstance = axios.create({
 
 AxiosInstance.interceptors.request.use(async req => {
   if (!authTokens) {
-    authTokens = localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null
+    authTokens = localStorage.getItem('currentData') ? JSON.parse(localStorage.getItem('currentData')) : null
     req.headers.Authorization = `Bearer ${authTokens?.access_token}`
   }
 
@@ -30,11 +30,11 @@ AxiosInstance.interceptors.request.use(async req => {
       'Refresh-Token': `${authTokens.refresh_token}`
     }
   }).then(response => {
-    localStorage.setItem('authTokens', JSON.stringify(response.data))
+    localStorage.setItem('currentData', JSON.stringify(response.data))
     req.headers.Authorization = `Bearer ${response.data.access_token}`
   }).catch(error => {
     req = null
-    localStorage.removeItem('authTokens')
+    localStorage.removeItem('currentData')
     window.location.reload()
   })
 

@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from 'react'
+import { toast } from 'react-toastify';
 
 export const AuthContext = createContext(null);
 
@@ -24,7 +25,6 @@ export const ContextProvider = props => {
 
     fetchLogin(login, password, error => {
       setLoginPending(false);
-
       if (!error) {
         setLoginSuccess(true);
       } else {
@@ -38,18 +38,23 @@ export const ContextProvider = props => {
     setLoginSuccess(false);
     setLoginError(null);
 
-    // let response = await fetch(`${global_url_api}/users/sign_out`, {
-    //   method: 'DELETE',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': `Bearer ${authTokens.access_token}`
-    //   }
-    // })
-    // if (response.status === 200) {
-    //   setAuthTokens(null)
-    //   setUser(null)
-    //   localStorage.removeItem('authTokens')
-    // }
+    let response = await fetch(`${global_url_api}/users/sign_out`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${JSON.parse(localStorage.getItem("currentData")).access_token}`
+      }
+    })
+    if (response.status === 200) {
+      localStorage.removeItem('currentData')
+      toast.success('Cerraste sesion con exito!', {theme: "dark"})
+      setTimeout(() => {
+        window.location.reload()
+      }, 1300)
+    }else {
+      localStorage.removeItem('currentData')
+      window.location.reload()
+    }
   }
 
   return (
@@ -65,9 +70,8 @@ export const ContextProvider = props => {
   );
 };
 
-
 const fetchLogin = async (login, password, callback) => {
-  let response = await fetch("http://127.0.0.1:3000/users/sign_in", {
+  let response = await fetch(`${global_url_api}/users/sign_in`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -77,18 +81,9 @@ const fetchLogin = async (login, password, callback) => {
   let data = await response.json()
 
   if (response.status === 200) {
-    // setAuthTokens(data)
-    // setUser(data.user)
-    // localStorage.setItem('authTokens', JSON.stringify(data))
+    localStorage.setItem('currentData', JSON.stringify(data))
     callback(null)
   } else {
-    return callback(new Error('Credenciales Invalidas'));
+    return callback(new Error(toast.error('Credenciales Invalidas', {theme: "dark"})));
   }
-
-
-  // if (email === 'admin' && password === 'admin') {
-  //   return callback(null);
-  // } else {
-  //   return callback(new Error('Invalid email and password'));
-  // }
 }
