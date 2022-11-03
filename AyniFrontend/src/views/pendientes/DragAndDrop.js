@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState,  useRef} from "react";
 // import ReactDOM from "react-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -19,71 +19,44 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import Data from './Data'
 
-// fake data generator
-const getItems = (count, offset = 0) =>
-  Array.from({ length: count }, (v, k) => k).map(k => ({
-    id: `item-${k + offset}-${new Date().getTime()}`,
-    content: `item ${k + offset}`
-  }))
-
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-}
-
-/**
- * Moves an item from one list to another list.
- */
- const move = (source, destination, droppableSource, droppableDestination) => {
-  const sourceClone = Array.from(source);
-  const destClone = Array.from(destination);
-  const [removed] = sourceClone.splice(droppableSource.index, 1);
-
-  destClone.splice(droppableDestination.index, 0, removed);
-
-  const result = {};
-  result[droppableSource.droppableId] = sourceClone;
-  result[droppableDestination.droppableId] = destClone;
-
-  return result;
-}
-
-const existe = ( info , param ) => {
-  return ( info.findIndex( (it) => it[0].id_colaborator === param ) )
-}
-
-const cargar = (Array) => {
-  for(let i = 0; i < Data.length; i++){
-    let id = Data[i].id_colaborator
-    let pos = existe(Array, id)
-    if(pos === -1 ){
-      Array.push( [Data[i]] )
-    }
-    else{
-      Array[pos].push( Data[i] )
-    }
-  }
-}
+import Card from "../extras/Card"
+import Form from './Form'
+import { reorder, move , cargar} from './extras/function'
 
 const DragAndDrop = () => {
+  const [visible, setVisible] = useState(false)
+  const [validated, setValidated] = useState(false)
+  const formRef = useRef(null)
+
+  const fun = () => {
+    console.log("XD")
+    setVisible(true)
+  }
+
+  const handleSubmit = (event) => {
+    const form = formRef.current
+    if (form.checkValidity() === false) {
+      event.stopPropagation()
+    } else {
+      alert("se ha validado y se esta enviando")
+      // aqui poner el usecrud para crear el banco
+    }
+    setValidated(true)
+  }
 
   const Colaboradores = []
-  cargar(Colaboradores)
+  cargar(Data, Colaboradores)
 
-  const [state, setState] = useState( Colaboradores )  
+  const [state, setState] = useState( Colaboradores )
 
-  function onDragEnd(result) {
+  function onDragEnd( result) {
     const { source, destination } = result;
-    // dropped outside the list
-    if (!destination) {
+    if (!destination) { // dropped outside the list
       return;
     }
     const sInd = +source.droppableId;
     const dInd = +destination.droppableId;
-
+  
     if (sInd === dInd) {
       const items = reorder(state[sInd], source.index, destination.index);
       const newState = [...state];
@@ -94,12 +67,29 @@ const DragAndDrop = () => {
       const newState = [...state];
       newState[sInd] = result[sInd];
       newState[dInd] = result[dInd];
-
+  
       setState(newState.filter(group => group.length));
     }
   }
 
+  function Title() {
+    return "Crear Nuevo Pendiente";
+  }
+
   return (
+    <>
+
+    <Card
+        Form={Form} //formulario 
+        Title={Title}
+        visible={visible}
+        setVisible={setVisible}
+        formRef={formRef}
+        validated={validated}
+        setValidated={setValidated}
+        handleSubmit={handleSubmit}
+    />
+
     <CRow>
       <CCol>
         <CCard
@@ -108,18 +98,9 @@ const DragAndDrop = () => {
         <CCardHeader>
           <CCol className="float-end">
             <CButton type="button"
-              onClick={() => {
-                setState([...state, []]);
-              }}
+              onClick={ () => fun() }
             >
-              Crear grupo
-            </CButton>
-            <CButton type="button"
-              onClick={() => {
-                setState([...state, getItems(1)]);
-              }}
-            >
-              Crear item
+              Crear Pendiente
             </CButton>
           </CCol>
         </CCardHeader>  
@@ -162,18 +143,18 @@ const DragAndDrop = () => {
                                 }}
                               >
                                 <CCardHeader>
-                                  {item.description}
+                                  <strong>{item.description}</strong>
                                 </CCardHeader>
                                 <CCardBody>
-                                  <h5>
+                                  <small>
                                     {item.start_hour}
-                                  </h5>
-                                  <h5>
+                                  </small><br/>
+                                  <small>
                                     {item.end_hour}
-                                  </h5>
-                                  <h5>
+                                  </small><br/>
+                                  <small>
                                     {item.state}
-                                  </h5>
+                                  </small>
                                 </CCardBody>
                                 <CCardFooter style={{ margin: "auto"}}>
                                   <CButton size={'sm'} color={'primary'}
@@ -215,6 +196,7 @@ const DragAndDrop = () => {
         </CCard>
       </CCol>
     </CRow>
+    </>
   )
 }
 

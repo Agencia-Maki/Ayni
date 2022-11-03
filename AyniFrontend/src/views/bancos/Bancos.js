@@ -96,7 +96,7 @@ const Bancos = () => {
         validated={validated}
         setValidated={setValidated}
         handleSubmit={handleSubmit}
-      />
+    />
     </>
   )
 }
