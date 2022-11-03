@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import {
   CButton,
   CCard,
@@ -66,36 +66,22 @@ const Bancos = () => {
     setValidated(true)
   }
 
-  const headerColums = [
-    {
-      key: 'name',
-      label: 'Nombre de Banco',
-    },
-    {
-      key: 'slug',
-      label: 'Abreviatura',
-    },
-    {
-      key: 'total_users',
-      label: '# de trabajadores',
-      filter: false,
-      sorter: false,
-    },
-    {
-      key: 'action',
-      label: 'Acciones',
-      // _style: { width: '1%' },
-      filter: false,
-      sorter: false,
-    },
-  ]
-
   function Title() {
     return "Crear Nuevo Banco";
   }
 
+  const loadBanks = async () => {
+    const response = await getBanksList()
+    setBanks(response.banks)
+  }
+
+  useEffect(() => {
+    loadBanks()
+  }, [])
+
   return (
     <>
+    { console.log(banks) }
     <CRow>
       <CCol xs={12}>
         <CCard className="mb-4 border border-primary">
@@ -106,10 +92,13 @@ const Bancos = () => {
             <CButton color="success" className="float-end" onClick={ () => fun() }>
               Nuevo Banco
             </CButton>
-            <SmartTable 
-              data={data_}
-              headerColums={headerColums}
-            />
+            {
+              banks.length > 0 ?
+              <SmartTable
+                data={banks}
+                headerColums={headerColums}
+              /> : null
+            }
           </CCardBody>
         </CCard>
       </CCol>
