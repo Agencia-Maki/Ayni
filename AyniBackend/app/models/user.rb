@@ -16,6 +16,7 @@ class User < ApplicationRecord
   
   # enums
   enum status: [:active, :inactive, :banned]
+  enum gender: [:male, :female, :others]
 
   # methods
   def set_default_status

@@ -26,7 +26,7 @@
 #   pension_system_type: "NR",
 #   receipt_of_honorarium: "no",
 #   document_type: "DNI",
-#   status: "activo",
+#   status: "active",
 #   bank_id: 1
 # )
 
@@ -34,7 +34,7 @@
 #   full_name: "root",
 #   document_number: "root",
 #   status: "active",
-#   personal_record_id: 2,
+#   personal_record_id: 4,
 #   rol_id: 1,
 #   password: "password",
 #   password_confirmation: "password"

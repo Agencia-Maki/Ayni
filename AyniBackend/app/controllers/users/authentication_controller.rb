@@ -10,8 +10,7 @@ module Users
           message: "Bienvenido a Ayni",
           access_token: response.headers['Access-Token'],
           refresh_token: response.headers['Refresh-Token'],
-          user: resource,
-          rol: resource.rol ? resource.rol : nil,
+          user: resource.as_json.merge(rol: resource.rol ? resource.rol : nil),
         }, status: :ok
       else
         render_error(422, message: I18n.t('api_guard.authentication.invalid_login_credentials'))

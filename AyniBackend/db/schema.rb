@@ -197,6 +197,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_181333) do
     t.string "document_number", null: false
     t.string "password_digest"
     t.integer "status"
+    t.integer "gender"
+    t.string "avatar"
     t.bigint "personal_record_id", null: false
     t.bigint "rol_id", null: false
     t.datetime "created_at", null: false

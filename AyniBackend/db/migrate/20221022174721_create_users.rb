@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :password_digest
 
       t.integer :status
+      t.integer :gender
+      t.string  :avatar
       t.belongs_to :personal_record, null: false, foreign_key: true
       t.references :rol, null: false, foreign_key: true
 
