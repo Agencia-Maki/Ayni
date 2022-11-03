@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, { useState, useRef } from "react"
 import {
   CButton,
   CCard,
@@ -14,7 +14,7 @@ import data_ from './data'
 import Card from "../extras/Card"
 import Form from "./Form"
 
-const Clientes = () => {
+const Table = () => {
 
   const [visible, setVisible] = useState(false)
   const [validated, setValidated] = useState(false)
@@ -38,54 +38,42 @@ const Clientes = () => {
 
   const headerColums = [
     {
-      key: 'document_type',
-      label: 'Tipo de documento',
+      key: 'name',
+      label: 'Nombre de Banco',
     },
     {
-      key: 'document_number',
-      label: 'Nº de documento',
+      key: 'slug',
+      label: 'Abreviatura',
     },
     {
-      key: 'full_name',
-      label: 'Nombres',
+      key: 'total_users',
+      label: '# de trabajadores',
+      sorter: false,
     },
     {
-      key: 'full_address',
-      label: 'Dirección',
-    },
-    {
-      key: 'payment_type_name',
-      label: 'Tipo de Pago',
-    },
-    {
-      key: 'country',
-      label: 'País',
-    },
-    {
-      key: 'contry_code',
-      label: 'Codigo de País',
-    },
-    {
-      key: 'user',
-      label: 'Usuario',
+      key: 'action',
+      label: 'Acciones',
+      // _style: { width: '1%' },
+      filter: false,
+      sorter: false,
     },
   ]
 
   function Title() {
-    return "Crear Nuevo Cliente";
+    return "Crear Pendientes";
   }
 
   return (
     <>
     <CRow>
       <CCol xs={12}>
-        <CCard className="mb-4 border border-primary">
+          <CCard className="mb-4 border border-primary">
           <CCardHeader>
-            <small>Panel de administración de </small> <strong>Clientes</strong> 
+            <small>Panel de administración de </small> <strong>pendientes</strong> 
           </CCardHeader>
           <CCardBody>
             <CButton color="success" className="float-end" onClick={ () => fun() }>
-              Crear Cliente
+              Crear Pendiente
             </CButton>
             <SmartTable 
               data={data_}
@@ -95,7 +83,11 @@ const Clientes = () => {
         </CCard>
       </CCol>
     </CRow>
-    <Card
+
+      <CButton color="success" className="float-end" onClick={ () => fun() }>
+        Prueba
+      </CButton>
+      <Card
         Form={Form} //formulario 
         Title={Title}
         visible={visible}
@@ -109,4 +101,4 @@ const Clientes = () => {
   )
 }
 
-export default Clientes
+export default Table
