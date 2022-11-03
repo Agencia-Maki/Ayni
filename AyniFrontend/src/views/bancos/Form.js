@@ -6,13 +6,13 @@ import {
 } from '@coreui/react-pro'
 
 const Modal = (props) => {
+  // 
 
-  const {validated} = props
+  const {validated, handleChange, current_bank} = props
   const {formRef} = props
 
   return (
     <>
-    
       <CForm className="row g-3 needs-validation"
         noValidate
         validated={validated}
@@ -20,6 +20,9 @@ const Modal = (props) => {
       >
         <CCol>
           <CFormInput
+            value={current_bank.name}
+            name="name"
+            onChange={handleChange}
             type="text"
             id="validationServer01"
             label="Nombre del Banco"
@@ -29,6 +32,9 @@ const Modal = (props) => {
         </CCol>
         <CCol>
           <CFormInput
+            value={current_bank.slug}
+            name="slug"
+            onChange={handleChange}
             type="text"
             id="validationServer02"
             label="Abreviatura"
