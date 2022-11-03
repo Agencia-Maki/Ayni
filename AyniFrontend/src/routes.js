@@ -6,8 +6,9 @@ const Clientes = React.lazy(() => import('./views/clientes/Clientes'))
 const Bancos = React.lazy(() => import('./views/bancos/Bancos'))
 const CotizacionG = React.lazy(() => import('./views/cotizaciones/General'))
 const CotizacionE = React.lazy(() => import('./views/cotizaciones/Ejecutivo'))
-const OrdenesG = React.lazy(() => import('./views/pendientes/General'))
-const OrdenesE = React.lazy(() => import('./views/pendientes/Colaborador'))
+const PendientesG = React.lazy(() => import('./views/pendientes/General'))
+const DragAndDrop = React.lazy(() => import('./views/pendientes/DragAndDrop'))
+const PendientesE = React.lazy(() => import('./views/pendientes/Colaborador'))
 
 const routes = [
   { path: '/', exact: true, name: 'Ayni' },
@@ -16,11 +17,9 @@ const routes = [
   { path: '/clientes', exact: true, name: 'Clientes', element: Clientes },
   { path: '/cotizaciones/general', exact: true, name: 'Cotización General', element: CotizacionG },
   { path: '/cotizaciones/ejecutivos', exact: true, name: 'Cotización Ejecutivo', element: CotizacionE},
-  { path: '/pendientes/general', exact: true, name: 'Ordenes General', element: OrdenesG },
-  { path: '/pendientes/ejecutivos', exact: true, name: 'Ordenes Ejecutivo', element: OrdenesE}
+  { path: '/pendientes/general', exact: true, name: 'Ordenes General', element: PendientesG },
+  { path: '/pendientes/general/gestionar', exact: true, name: 'Gestionar Pendientes', element: DragAndDrop },
+  { path: '/pendientes/ejecutivos', exact: true, name: 'Ordenes Ejecutivo', element: PendientesE}
 ]
-
-
-// pendientes/general/nuevo
 
 export default routes

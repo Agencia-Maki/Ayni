@@ -18,8 +18,6 @@ import {
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import Data from './Data'
-// import Columna1 from './Data1'
-// import Columna2 from './Data2'
 
 // fake data generator
 const getItems = (count, offset = 0) =>
@@ -54,27 +52,28 @@ const reorder = (list, startIndex, endIndex) => {
 }
 
 const existe = ( info , param ) => {
-  return ( info.findIndex( (it) => it[0].pertenece === param ) )
+  return ( info.findIndex( (it) => it[0].id_colaborator === param ) )
+}
+
+const cargar = (Array) => {
+  for(let i = 0; i < Data.length; i++){
+    let id = Data[i].id_colaborator
+    let pos = existe(Array, id)
+    if(pos === -1 ){
+      Array.push( [Data[i]] )
+    }
+    else{
+      Array[pos].push( Data[i] )
+    }
+  }
 }
 
 const DragAndDrop = () => {
-  // const [state, setState] = useState( [ Data ] );
-  const [state, setState] = useState([])
-  // const state = []
-  // const [load, setLoad] = useState( false )
-  
-  // const Cargar = () => {
-    for(let i = 0; i < Data.length; i++){
-      let name = Data[i].pertenece
-      let pos = existe(state, name)
-      if(pos === -1 ){
-        state.push( [Data[i]] )
-      }
-      else{
-        state[pos].push( Data[i] )
-      }
-    }
-  // }
+
+  const Colaboradores = []
+  cargar(Colaboradores)
+
+  const [state, setState] = useState( Colaboradores )  
 
   function onDragEnd(result) {
     const { source, destination } = result;
@@ -104,7 +103,7 @@ const DragAndDrop = () => {
     <CRow>
       <CCol>
         <CCard
-        className={`mb-3 border border-dark`}
+        className={`mb-4 border border-primary`}
         >
         <CCardHeader>
           <CCol className="float-end">
@@ -163,19 +162,18 @@ const DragAndDrop = () => {
                                 }}
                               >
                                 <CCardHeader>
-                                  {item.content}
+                                  {item.description}
                                 </CCardHeader>
                                 <CCardBody>
                                   <h5>
-                                    {item.time}
+                                    {item.start_hour}
                                   </h5>
                                   <h5>
-                                    {item.estado}
+                                    {item.end_hour}
                                   </h5>
                                   <h5>
-                                    {item.pertenece}
+                                    {item.state}
                                   </h5>
-
                                 </CCardBody>
                                 <CCardFooter style={{ margin: "auto"}}>
                                   <CButton size={'sm'} color={'primary'}

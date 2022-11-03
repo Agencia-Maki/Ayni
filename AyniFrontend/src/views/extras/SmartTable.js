@@ -14,7 +14,7 @@ const SmartTable = (props) => {
 
   return (
     <CSmartTable
-      sorterValue={{ column: 'name', state: 'asc' }}
+      // sorterValue={{ column: 'name', state: 'asc' }}
       clickableRows={false}
       tableProps={{
         striped: true,

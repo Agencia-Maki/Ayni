@@ -23,22 +23,7 @@ import {
   faPiggyBank
 } from '@fortawesome/free-solid-svg-icons'
 
-import CIcon from '@coreui/icons-react'
-import {
-  cilBell,
-  cilCalculator,
-  cilCalendar,
-  cilDrop,
-  cilEnvelopeOpen,
-  cilLayers,
-  cilNotes,
-  cilPencil,
-  cilSpeedometer,
-  cilSpreadsheet,
-  cilStar,
-  cilPlus,
-} from '@coreui/icons'
-import { CNavGroup, CNavGroupItems, CNavItem, CNavTitle } from '@coreui/react-pro'
+import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 const _nav = [
   {
