@@ -4,13 +4,15 @@ const Columna1 = [
     content: "Pendiente C1001",
     time: "9:30:00 PM",
     estado: "Completado",
+    pertenece: "jorge",
     status: "001"
   },
   {
     id: "2",
     content: "Pendiente C1002",
     time: "9:30:00 PM",
-    estado: "No se confirmo hora xxxxxxxxxxxxxxxxxxx",
+    estado: "No se confirmo hora",
+    pertenece: "rous",
     status: "001"
   },
   {
@@ -18,6 +20,7 @@ const Columna1 = [
     content: "Pendiente C1003",
     time: "9:30:00 PM",
     estado: "Completado",
+    pertenece: "jorge",
     status: "001"
   },
   {
@@ -25,6 +28,7 @@ const Columna1 = [
     content: "Pendiente C1004",
     time: "9:30:00 PM",
     estado: "No Completado",
+    pertenece: "rous",
     status: "002"
   },
 ];

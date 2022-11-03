@@ -4,6 +4,7 @@ const Columna2 = [
     content: "Pendiente C1004",
     time: "9:30:00 PM",
     estado: "Completado",
+    pertenece: "jorge",
     status: "002"
   },
   {
@@ -11,6 +12,7 @@ const Columna2 = [
     content: "Pendiente C2001",
     time: "9:30:00 PM",
     estado: "No se confirmo hora",
+    pertenece: "rous",
     status: "003"
   },
   {
@@ -18,6 +20,7 @@ const Columna2 = [
     content: "Pendiente C2002",
     time: "9:30:00 PM",
     estado: "Completado",
+    pertenece: "jorge",
     status: "001"
   },
   {
@@ -25,6 +28,7 @@ const Columna2 = [
     content: "Pendiente C2003",
     time: "9:30:00 PM",
     estado: "No se confirmo hora",
+    pertenece: "rous",
     status: "002"
   },
   {
@@ -32,6 +36,7 @@ const Columna2 = [
     content: "Pendiente C2004",
     time: "9:30:00 PM",
     estado: "No se completo",
+    pertenece: "jorge",
     status: "002"
   },
 ];

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 // import ReactDOM from "react-dom";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -17,15 +17,16 @@ import {
 } from '@coreui/react-pro'
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-import Columna1 from './Data1'
-import Columna2 from './Data2'
+import Data from './Data'
+// import Columna1 from './Data1'
+// import Columna2 from './Data2'
 
 // fake data generator
 const getItems = (count, offset = 0) =>
   Array.from({ length: count }, (v, k) => k).map(k => ({
     id: `item-${k + offset}-${new Date().getTime()}`,
     content: `item ${k + offset}`
-  }));
+  }))
 
 const reorder = (list, startIndex, endIndex) => {
   const result = Array.from(list);
@@ -33,7 +34,7 @@ const reorder = (list, startIndex, endIndex) => {
   result.splice(endIndex, 0, removed);
 
   return result;
-};
+}
 
 /**
  * Moves an item from one list to another list.
@@ -50,12 +51,30 @@ const reorder = (list, startIndex, endIndex) => {
   result[droppableDestination.droppableId] = destClone;
 
   return result;
-};
+}
+
+const existe = ( info , param ) => {
+  return ( info.findIndex( (it) => it[0].pertenece === param ) )
+}
 
 const DragAndDrop = () => {
-  const [state, setState] = useState( [ Columna1 , Columna2 ] );
-  // console.log("state: ", state)
-  // console.log("type: ", Columna1)
+  // const [state, setState] = useState( [ Data ] );
+  const [state, setState] = useState([])
+  // const state = []
+  // const [load, setLoad] = useState( false )
+  
+  // const Cargar = () => {
+    for(let i = 0; i < Data.length; i++){
+      let name = Data[i].pertenece
+      let pos = existe(state, name)
+      if(pos === -1 ){
+        state.push( [Data[i]] )
+      }
+      else{
+        state[pos].push( Data[i] )
+      }
+    }
+  // }
 
   function onDragEnd(result) {
     const { source, destination } = result;
@@ -88,13 +107,13 @@ const DragAndDrop = () => {
         className={`mb-3 border border-dark`}
         >
         <CCardHeader>
-          <CCol>
+          <CCol className="float-end">
             <CButton type="button"
               onClick={() => {
                 setState([...state, []]);
               }}
             >
-              Crear nuevo grupo
+              Crear grupo
             </CButton>
             <CButton type="button"
               onClick={() => {
@@ -112,8 +131,12 @@ const DragAndDrop = () => {
               {state.map((el, ind) => (
                 <Droppable key={ind} droppableId={`${ind}`}>
                   {(provided, snapshot) => (
-                    <CCard 
-                      style={{ background: "#000000", minWidth: '7cm'}}
+                    <CCard className="me-4"
+                      style={{ 
+                        background: "#000000",
+                        minWidth: '6cm',
+                        // margin: "auto"
+                      }}
                       ref={provided.innerRef}
                       {...provided.droppableProps}
                     >
@@ -149,6 +172,10 @@ const DragAndDrop = () => {
                                   <h5>
                                     {item.estado}
                                   </h5>
+                                  <h5>
+                                    {item.pertenece}
+                                  </h5>
+
                                 </CCardBody>
                                 <CCardFooter style={{ margin: "auto"}}>
                                   <CButton size={'sm'} color={'primary'}
