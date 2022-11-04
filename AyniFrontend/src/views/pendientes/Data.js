@@ -42,7 +42,7 @@ const Data = [
   {
     id: "5",
     id_colaborator: "012345",
-    name: "jorge",
+    name: "Jorge",
     description: "Pendiente C1004",
     start_hour: "9:30:00 PM",
     end_hour: "10:30:00 PM",
@@ -82,7 +82,7 @@ const Data = [
   {
     id: "9",
     id_colaborator: "012345",
-    name: "jorge",
+    name: "Jorge",
     description: "Pendiente C2004",
     start_hour: "9:30:00 PM",
     end_hour: "10:30:00 PM",

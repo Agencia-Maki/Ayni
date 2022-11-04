@@ -23,6 +23,7 @@ import Card from "../extras/Card"
 import Form from './Form'
 import { reorder, move , cargar} from './extras/function'
 
+
 const DragAndDrop = () => {
   const [visible, setVisible] = useState(false)
   const [validated, setValidated] = useState(false)
@@ -106,6 +107,19 @@ const DragAndDrop = () => {
         </CCardHeader>  
 
         <CCardBody>
+
+          <CRow>
+            <CCol 
+            style={{ 
+              background: "#16E7B1",
+            }}>Jorge</CCol>
+            <CCol>Rous</CCol>
+            <CCol 
+            style={{ 
+              background: "#16E7B1",
+            }}>Sofi</CCol>
+          </CRow>
+
           <CCol style={{ display: "flex" }}>
             <DragDropContext onDragEnd={onDragEnd}>
               {state.map((el, ind) => (
@@ -114,7 +128,7 @@ const DragAndDrop = () => {
                     <CCard className="me-4"
                       style={{ 
                         background: "#000000",
-                        minWidth: '6cm',
+                        minWidth: 'auto',
                         // margin: "auto"
                       }}
                       ref={provided.innerRef}
@@ -136,10 +150,10 @@ const DragAndDrop = () => {
                             >
                               <CCard
                                 style={{
-                                  width: '6cm',
-                                  height: '6cm',
-                                  display: "flex",
-                                  justifyContent: "space-around",
+                                  width: '9cm',
+                                  height: 'auto',
+                                  // display: "flex",
+                                  // justifyContent: "space-around",
                                 }}
                               >
                                 <CCardHeader>
