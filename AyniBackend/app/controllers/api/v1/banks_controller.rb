@@ -3,7 +3,7 @@ class Api::V1::BanksController < ApplicationController
   respond_to :json
 
   def index
-    banks = Bank.all
+    banks = Bank.where.not(slug: "S/A")
     render json: {
       banks: banks.map do |bank| {
         id: bank.id,

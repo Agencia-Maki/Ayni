@@ -1,12 +1,12 @@
 es:
   activerecord:
     models:
-      client:
+      bank:
         one: 'Banco'
         other: 'Bancos'
     errors:
       models:
-        client:
+        bank:
           attributes:
             name:
               blank: 'es un campo obligatorio'
@@ -15,12 +15,12 @@ es:
       messages:
         record_invalid: 'El banco no pudo ser guardado. Por favor, corrija los errores y vuelva a intentarlo.'
     methods:
-      client:
+      bank:
         create: 'registrado de manera exitosa!'
         update: 'actualizado de manera exitosa!'
         destroy: 'eliminado de manera exitosa!'
     attributes:
-      client:
+      bank:
         name: 'Los Nombre'
         slug: 'La abreviatura'
   general_errors:
