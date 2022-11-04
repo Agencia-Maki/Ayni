@@ -11,7 +11,7 @@ import SmartTable from '../extras/SmartTable'
 
 import useCrud from 'src/hooks/useCrud'
 import useChange from 'src/hooks/useChange'
-import Card from "../extras/Card"
+import ModalForm from "../extras/ModalForm"
 import Form from "./Form"
 
 const headerColums = [
@@ -38,6 +38,7 @@ const headerColums = [
 ]
 
 const initialData = {
+  id: 0,
   name: "",
   slug: "",
   total_users: ""
@@ -46,29 +47,48 @@ const initialData = {
 const Bancos = () => {
   const [visible, setVisible] = useState(false)
   const [banks, setBanks] = useState([])
+  const [typeForm, setTypeForm] = useState("")
 
-  const [currentBank, setCurrentBank] = useState(initialData)
-  const { handleChange, data: current_bank } = useChange(currentBank)
+  const { handleChange, data: currentBank, resetData: resetForm, setData: setCurrentBank } = useChange(initialData)
 
-  const { getModel: getBanksList, insertModel: insertBank } = useCrud('/api/v1/banks')
+  const { getModel: getBanksList, insertModel: insertBank, updateModel: updateBank } = useCrud('/api/v1/banks')
   
   const [validated, setValidated] = useState(false)
   const formRef = useRef(null)
 
   const showModalNewBank = () => {
-    console.log("XD")
+    setTypeForm("create")
     setVisible(true)
   }
 
-  const handleSubmit = (event) => {
+  const showModalEditBank = (bank) => {
+    setCurrentBank(bank)
+    setTypeForm("update")
+    setVisible(true)
+  }
+
+  const handleInsertBank = async (event) => {
     const form = formRef.current
     if (form.checkValidity() === false) {
       event.stopPropagation()
     } else {
-      alert("se ha validado y se esta enviando")
-      // insertBank(currentBank)
-      console.log(formRef.current)
-      // aqui poner el usecrud para crear el banco
+      await insertBank(currentBank)
+      resetForm()
+      setVisible(false)
+      loadBanks()
+    }
+    setValidated(true)
+  }
+
+  const handleUpdateBank = async (event) => {
+    const form = formRef.current
+    if (form.checkValidity() === false) {
+      event.stopPropagation()
+    } else {
+      await updateBank(currentBank, `/api/v1/banks/${currentBank.id}`)
+      resetForm()
+      setVisible(false)
+      loadBanks()
     }
     setValidated(true)
   }
@@ -78,13 +98,25 @@ const Bancos = () => {
     setBanks(response.banks)
   }
 
+  const setTitleForm = () => {
+    if (typeForm === "create") {
+      return "Registrar Banco"
+    } else {
+      return "Actualizar Banco"
+    }
+  }
+
+  const closeModal = () => {
+    setVisible(false)
+    resetForm()
+  }
+
   useEffect(() => {
     loadBanks()
   }, [])
 
   return (
     <>
-    { console.log(current_bank) }
       <CRow>
         <CCol xs={12}>
           <CCard className="mb-4 border border-primary">
@@ -99,24 +131,29 @@ const Bancos = () => {
                 banks.length > 0 ?
                   <SmartTable
                     data={banks}
-                    headerColums={headerColums}
+                    headerColums={headerColums}                    
+                    showModalEditBank={showModalEditBank}
+                    typeForm={typeForm}
                   /> : null
               }
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
-      <Card
+      <ModalForm
         Form={Form}
-        Title="Crear Nuevo Banco"
+        Title={setTitleForm()}
         visible={visible}
         setVisible={setVisible}
         formRef={formRef}
         validated={validated}
         setValidated={setValidated}
-        handleSubmit={handleSubmit}
+        handleInsertBank={handleInsertBank}
         handleChange={handleChange}
-        current_bank={current_bank}
+        currentBank={currentBank}
+        typeForm={typeForm}
+        closeModal={closeModal}
+        handleUpdateBank={handleUpdateBank}
       />
     </>
   )

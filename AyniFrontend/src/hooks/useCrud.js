@@ -17,9 +17,18 @@ const useCrud = (url) => {
     return response.data
   }
 
+  const updateModel = async (data, _url = url) => {
+    const response = await AxiosInstance.put(_url, data)
+    if (response.status === 200) {
+      setToast(response)
+    }
+    return response.data
+  }
+
   return {
     getModel,
-    insertModel
+    insertModel,
+    updateModel
   }
 }
 

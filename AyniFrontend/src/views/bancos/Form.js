@@ -6,9 +6,7 @@ import {
 } from '@coreui/react-pro'
 
 const Modal = (props) => {
-  // 
-
-  const {validated, handleChange, current_bank} = props
+  const {validated, handleChange, currentBank} = props
   const {formRef} = props
 
   return (
@@ -20,7 +18,7 @@ const Modal = (props) => {
       >
         <CCol>
           <CFormInput
-            value={current_bank.name}
+            value={currentBank.name}
             name="name"
             onChange={handleChange}
             type="text"
@@ -32,7 +30,7 @@ const Modal = (props) => {
         </CCol>
         <CCol>
           <CFormInput
-            value={current_bank.slug}
+            value={currentBank.slug}
             name="slug"
             onChange={handleChange}
             type="text"

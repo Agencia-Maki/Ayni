@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify'
 const DefaultLayout = () => {
   return (
     <>
-      { console.log(JSON.parse(localStorage.getItem("currentData"))) }
       <AppSidebar />
       <div className="wrapper d-flex flex-column min-vh-100 bg-light bg-opacity-50 dark:bg-transparent">
         <AppHeader />

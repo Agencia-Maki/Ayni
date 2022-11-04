@@ -126,15 +126,9 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Áreas',
+    name: 'Áreas y Puestos',
     to: '/areas',
     icon: <FontAwesomeIcon icon={faNetworkWired} inverse className="me-3 ms-1" size='lg' />,
-  },
-  {
-    component: CNavItem,
-    name: 'Roles y Permisos',
-    to: '/roles',
-    icon: <FontAwesomeIcon icon={faRocket} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavItem,

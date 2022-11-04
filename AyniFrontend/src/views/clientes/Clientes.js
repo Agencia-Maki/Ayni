@@ -11,7 +11,7 @@ import {
 import SmartTable from '../extras/SmartTable'
 import data_ from './data'
 
-import Card from "../extras/Card"
+import Card from "../extras/ModalForm"
 import Form from "./Form"
 
 const Clientes = () => {

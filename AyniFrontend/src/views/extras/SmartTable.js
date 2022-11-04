@@ -10,11 +10,11 @@ import {
 
 const SmartTable = (props) => {
   // destructuring props
-  const { headerColums, data } = props
+  const { headerColums, data, showModalEditBank, handleUpdateBank } = props
 
   return (
     <CSmartTable
-      sorterValue={{ column: 'name', state: 'asc' }}
+      // sorterValue={{ column: 'name', state: 'asc' }}
       clickableRows={false}
       tableProps={{
         striped: true,
@@ -41,7 +41,7 @@ const SmartTable = (props) => {
         action: (item) => {
           return (
             <td>
-              <CButton size={'sm'} className='me-2'>
+              <CButton size={'sm'} className='me-2' onClick={() => showModalEditBank(item)}>
                 <FontAwesomeIcon icon={faPencil} inverse />
               </CButton>
 
