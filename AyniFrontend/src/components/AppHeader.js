@@ -25,6 +25,7 @@ import { logo } from 'src/assets/brand/logo'
 
 const AppHeader = () => {
   const dispatch = useDispatch()
+  const currentUser = JSON.parse(localStorage.getItem('currentData')).user
 
   const theme = useSelector((state) => state.theme)
 
@@ -65,8 +66,17 @@ const AppHeader = () => {
           <AppHeaderDropdownTasks />
           <AppHeaderDropdownMssg />
         </CHeaderNav>
+        <CHeaderNav>
+          <small>
+            {
+              currentUser.gender === 'female' ? `Bienvenida ${currentUser.full_name}` : `Bienvenido ${currentUser.full_name}`
+            }
+          </small>
+        </CHeaderNav>
         <CHeaderNav className="ms-3 me-4">
-          <AppHeaderDropdown />
+          <AppHeaderDropdown 
+            currentUser={currentUser}
+          />
         </CHeaderNav>
         <CHeaderToggler
           className="px-md-0 me-md-3"

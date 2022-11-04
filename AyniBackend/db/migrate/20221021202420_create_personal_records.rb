@@ -12,7 +12,7 @@ class CreatePersonalRecords < ActiveRecord::Migration[7.0]
       t.string :full_address
       t.string :province
       t.string :department
-      t.string :banck_account_number
+      t.string :bank_account_number
       t.string :civil_status
       t.string :first_phone_number
       t.string :second_phone_number

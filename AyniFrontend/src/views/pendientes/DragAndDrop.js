@@ -19,7 +19,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import Data from './Data'
 
-import Card from "../extras/Card"
+// import Card from "../extras/Card"
 import Form from './Form'
 import { reorder, move , cargar} from './extras/function'
 
@@ -80,7 +80,7 @@ const DragAndDrop = () => {
   return (
     <>
 
-    <Card
+    {/* <Card
         Form={Form} //formulario 
         Title={Title}
         visible={visible}
@@ -89,7 +89,7 @@ const DragAndDrop = () => {
         validated={validated}
         setValidated={setValidated}
         handleSubmit={handleSubmit}
-    />
+    /> */}
 
     <CRow>
       <CCol>

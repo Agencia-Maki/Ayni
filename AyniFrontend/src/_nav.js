@@ -3,27 +3,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {
   faGaugeHigh,
-  faFileSignature,
-  faUserAstronaut,
-  faClipboardUser,
-  faMeteor,
-  faMedal,
-  faUsersViewfinder,
   faUsersGear,
   faHandshake,
-  faGhost,
   faListCheck,
   faClipboardList,
   faLaptopFile,
   faFileContract,
-  faPeopleArrows,
   faPeopleGroup,
   faNetworkWired,
   faRocket,
   faPiggyBank
 } from '@fortawesome/free-solid-svg-icons'
 
-import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react-pro'
+import { CNavGroup, CNavGroupItems, CNavItem, CNavTitle } from '@coreui/react-pro'
 
 const _nav = [
   {
@@ -135,15 +127,9 @@ const _nav = [
   },
   {
     component: CNavItem,
-    name: 'Áreas',
+    name: 'Áreas y Puestos',
     to: '/areas',
     icon: <FontAwesomeIcon icon={faNetworkWired} inverse className="me-3 ms-1" size='lg' />,
-  },
-  {
-    component: CNavItem,
-    name: 'Roles y Permisos',
-    to: '/roles',
-    icon: <FontAwesomeIcon icon={faRocket} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavItem,

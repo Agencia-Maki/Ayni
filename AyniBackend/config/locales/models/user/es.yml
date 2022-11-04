@@ -1,0 +1,22 @@
+es:
+  api_guard:
+    authentication:
+      signed_in: 'Inicio de sesión exitoso'
+      signed_out: 'Cierre de sesión exitoso'
+      invalid_login_credentials: 'Credenciales de inicio de sesión inválidas'
+    password:
+      changed: 'Contraseña cambiada exitosamente'
+    registration:
+      signed_up: 'Registro exitoso'
+      account_deleted: 'Cuenta eliminada exitosamente'
+    access_token:
+      refreshed: 'Token de acceso actualizado exitosamente'
+      missing: 'Token de acceso no encontrado'
+      invalid: 'Token de acceso inválido'
+      expired: 'Token de acceso expirado'
+    refresh_token:
+      invalid: 'Token de actualización inválido'
+      missing: 'Token de actualización no encontrado'
+    response:
+      success: 'exito'
+      error: 'error'

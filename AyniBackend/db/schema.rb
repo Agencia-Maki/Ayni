@@ -147,7 +147,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_181333) do
     t.string "full_address"
     t.string "province"
     t.string "department"
-    t.string "banck_account_number"
+    t.string "bank_account_number"
     t.string "civil_status"
     t.string "first_phone_number"
     t.string "second_phone_number"
@@ -193,12 +193,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_181333) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "full_name"
-    t.string "document_number"
+    t.string "full_name", null: false
+    t.string "document_number", null: false
     t.string "password_digest"
+    t.integer "status"
+    t.integer "gender"
+    t.string "avatar"
+    t.bigint "personal_record_id", null: false
+    t.bigint "rol_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_number"], name: "index_users_on_document_number", unique: true
+    t.index ["personal_record_id"], name: "index_users_on_personal_record_id"
+    t.index ["rol_id"], name: "index_users_on_rol_id"
   end
 
   add_foreign_key "blacklisted_tokens", "users"
@@ -218,4 +225,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_22_181333) do
   add_foreign_key "refresh_tokens", "users"
   add_foreign_key "rols", "areas"
   add_foreign_key "user_tracks", "users"
+  add_foreign_key "users", "personal_records"
+  add_foreign_key "users", "rols"
 end
