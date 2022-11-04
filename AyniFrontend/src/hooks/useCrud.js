@@ -25,10 +25,19 @@ const useCrud = (url) => {
     return response.data
   }
 
+  const deleteModel = async (_url = url) => {
+    const response = await AxiosInstance.delete(_url)
+    if (response.status === 200) {
+      setToast(response)
+    }
+    return response.data
+  }
+
   return {
     getModel,
     insertModel,
-    updateModel
+    updateModel,
+    deleteModel
   }
 }
 

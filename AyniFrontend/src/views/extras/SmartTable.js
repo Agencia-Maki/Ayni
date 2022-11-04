@@ -6,11 +6,20 @@ import {
   faPencil
 } from '@fortawesome/free-solid-svg-icons'
 
+import useConfirmation from 'src/hooks/useConfirmation'
+
 // import data from './_data.js'
+
+const confirmationData = {
+  title: 'Esta seguro(a) eliminar este banco? 🫣',
+  text: 'Esta acción hará que los trabajadores asociados a este banco se actualice a banco no asignados.',
+  text_cancel: 'No se borró el registro del banco, sigue activo 🤗'
+}
 
 const SmartTable = (props) => {
   // destructuring props
-  const { headerColums, data, showModalEditBank, handleUpdateBank } = props
+  const { headerColums, data, showModalEditBank, handleDeleteBank } = props
+  const { handleConfirmation } = useConfirmation()  
 
   return (
     <CSmartTable
@@ -45,7 +54,7 @@ const SmartTable = (props) => {
                 <FontAwesomeIcon icon={faPencil} inverse />
               </CButton>
 
-              <CButton size={'sm'} color={'danger'}>
+              <CButton size={'sm'} color={'danger'} onClick={() => handleConfirmation(confirmationData.title, confirmationData.text , () => handleDeleteBank(item) ,confirmationData.text_cancel)}>
                 <FontAwesomeIcon icon={faTrash} inverse />
               </CButton>
             </td>

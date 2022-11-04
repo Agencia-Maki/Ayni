@@ -51,7 +51,10 @@ const Bancos = () => {
 
   const { handleChange, data: currentBank, resetData: resetForm, setData: setCurrentBank } = useChange(initialData)
 
-  const { getModel: getBanksList, insertModel: insertBank, updateModel: updateBank } = useCrud('/api/v1/banks')
+  const { getModel: getBanksList, 
+          insertModel: insertBank, 
+          updateModel: updateBank,
+          deleteModel: deleteBank } = useCrud('/api/v1/banks')
   
   const [validated, setValidated] = useState(false)
   const formRef = useRef(null)
@@ -91,6 +94,12 @@ const Bancos = () => {
       loadBanks()
     }
     setValidated(true)
+  }
+
+  const handleDeleteBank = async (bank) => {
+    // console.log(bank)
+    await deleteBank(`/api/v1/banks/${bank.id}`)
+    loadBanks()
   }
 
   const loadBanks = async () => {
@@ -134,6 +143,7 @@ const Bancos = () => {
                     headerColums={headerColums}                    
                     showModalEditBank={showModalEditBank}
                     typeForm={typeForm}
+                    handleDeleteBank={handleDeleteBank}
                   /> : null
               }
             </CCardBody>
