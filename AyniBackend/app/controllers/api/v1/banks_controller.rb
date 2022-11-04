@@ -1,5 +1,5 @@
 class Api::V1::BanksController < ApplicationController
-  before_action :set_bank, only: [:show, :update]
+  before_action :set_bank, only: [:show, :update, :destroy]
   respond_to :json
 
   def index
@@ -28,6 +28,10 @@ class Api::V1::BanksController < ApplicationController
 
   def update
     @bank.update!(bank_params) ? success_response(@bank,"update") : error_response(@bank,"update")
+  end
+
+  def destroy
+    @bank.destroy! ? success_response(@bank,"destroy") : error_response(@bank,"destroy")
   end
 
   private
