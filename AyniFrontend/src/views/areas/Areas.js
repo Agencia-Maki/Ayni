@@ -1,117 +1,115 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, {useState, useEffect, useRef} from "react"
+import { Link } from "react-router-dom";
 import {
-  CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
   CRow
 } from '@coreui/react-pro'
-import SmartTable from '../extras/SmartTable'
+import SmartTable from "../extras/SmartTable"
 
 import useCrud from 'src/hooks/useCrud'
 import useChange from 'src/hooks/useChange'
 import ModalForm from "../extras/ModalForm"
-import Form from "./Form"
+
+// import Data from "./Data"
+import Form from './Form'
+// const Data = []
 
 const headerColums = [
   {
+    key: 'id',
+    label: '#',
+    filter: false,
+    sorter: false
+  },
+  {
     key: 'name',
-    label: 'Nombre de Banco',
+    label: 'Nombre',
   },
   {
     key: 'slug',
-    label: 'Abreviatura',
-  },
-  {
-    key: 'total_users',
-    label: '# de trabajadores',
-    filter: false,
-    sorter: false,
-  },
-  {
-    key: 'action',
-    label: 'Acciones',
-    filter: false,
-    sorter: false,
-  },
+    label: 'Abreviatura'
+  }
 ]
 
 const initialData = {
   id: 0,
   name: "",
-  slug: "",
-  total_users: ""
+  slug: ""
 }
 
-const Bancos = () => {
+const Table = () => {
+
   const [visible, setVisible] = useState(false)
-  const [banks, setBanks] = useState([])
+  const [areas, setAreas] = useState([])
   const [typeForm, setTypeForm] = useState("")
 
-  const { handleChange, data: currentBank, resetData: resetForm, setData: setCurrentBank } = useChange(initialData)
-
-  const { getModel: getBanksList, 
-          insertModel: insertBank, 
-          updateModel: updateBank,
-          deleteModel: deleteBank } = useCrud('/api/v1/banks')
-  
   const [validated, setValidated] = useState(false)
   const formRef = useRef(null)
 
-  const showModalNewBank = () => {
+  const { handleChange, data: currentArea, resetData: resetForm, setData: setCurrentArea } = useChange(initialData)
+
+  const { getModel: getAreasList, 
+          insertModel: insertArea, 
+          updateModel: updateArea,
+          deleteModel: deleteArea } = useCrud('/api/v1/areas')
+
+
+  const showModalNewArea = () => {
     setTypeForm("create")
     setVisible(true)
   }
 
-  const showModalEditBank = (bank) => {
-    setCurrentBank(bank)
+  const showModalEditArea = (bank) => {
+    setCurrentArea(areas)
     setTypeForm("update")
     setVisible(true)
   }
 
-  const handleInsertBank = async (event) => {
+  const handleInsertArea = async (event) => {
     const form = formRef.current
     if (form.checkValidity() === false) {
       event.stopPropagation()
     } else {
-      await insertBank(currentBank)
+      await insertArea(currentArea)
       resetForm()
       setVisible(false)
-      loadBanks()
+      loadAreas()
     }
     setValidated(true)
   }
 
-  const handleUpdateBank = async (event) => {
+  const handleUpdateArea = async (event) => {
     const form = formRef.current
     if (form.checkValidity() === false) {
       event.stopPropagation()
     } else {
-      await updateBank(currentBank, `/api/v1/banks/${currentBank.id}`)
+      await updateArea(currentArea, `/api/v1/areas/${currentArea.id}`)
       resetForm()
       setVisible(false)
-      loadBanks()
+      loadAreas()
     }
     setValidated(true)
   }
 
-  const handleDeleteBank = async (bank) => {
+  const handleDeleteArea = async (areas) => {
     // console.log(bank)
-    await deleteBank(`/api/v1/banks/${bank.id}`)
-    loadBanks()
+    await deleteArea(`/api/v1/areas/${areas.id}`)
+    loadAreas()
   }
 
-  const loadBanks = async () => {
-    const response = await getBanksList()
-    setBanks(response.banks)
+  const loadAreas = async () => {
+    const response = await getAreasList()
+    setAreas(response.areas)
   }
 
   const setTitleForm = () => {
     if (typeForm === "create") {
-      return "Registrar Banco"
+      return "Registrar Area"
     } else {
-      return "Actualizar Banco"
+      return "Actualizar Area"
     }
   }
 
@@ -121,8 +119,9 @@ const Bancos = () => {
   }
 
   useEffect(() => {
-    loadBanks()
+    loadAreas()
   }, [])
+
 
   return (
     <>
@@ -130,26 +129,27 @@ const Bancos = () => {
         <CCol xs={12}>
           <CCard className="mb-4 border border-primary">
             <CCardHeader>
-              <small>Panel de administración de </small> <strong>Bancos</strong>
+              <small>Panel de administración de </small> <strong>Areas - Puestos</strong> 
             </CCardHeader>
             <CCardBody>
-              <CButton color="success" className="float-end" onClick={() => showModalNewBank()}>
-                Registrar Nuevo Banco
-              </CButton>
+              <Link className="btn btn-sm btn-success float-end" onClick={() => showModalNewArea()}>
+                Crear Areas y Puestos
+              </Link>
               {
-                banks.length > 0 ?
+                areas.length > 0 ?
                   <SmartTable
-                    data={banks}
+                    data={areas}
                     headerColums={headerColums}                    
-                    showModalEditData={showModalEditBank}
+                    showModalEditData={showModalEditArea}
                     typeForm={typeForm}
-                    handleDeleteData={handleDeleteBank}
+                    handleDeleteData={handleDeleteArea}
                   /> : null
               }
             </CCardBody>
           </CCard>
         </CCol>
       </CRow>
+
       <ModalForm
         Form={Form}
         Title={setTitleForm()}
@@ -158,15 +158,15 @@ const Bancos = () => {
         formRef={formRef}
         validated={validated}
         setValidated={setValidated}
-        handleInsertData={handleInsertBank}
+        handleInsertData={handleInsertArea}
         handleChange={handleChange}
-        currentData={currentBank}
+        currentData={currentArea}
         typeForm={typeForm}
         closeModal={closeModal}
-        handleUpdateData={handleUpdateBank}
+        handleUpdateData={handleUpdateArea}
       />
     </>
   )
 }
 
-export default Bancos
+export default Table

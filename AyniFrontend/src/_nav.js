@@ -129,7 +129,7 @@ const _nav = [
   {
     component: CNavItem,
     name: 'Áreas y Puestos',
-    to: '/areas',
+    to: '/areas-puestos',
     icon: <FontAwesomeIcon icon={faNetworkWired} inverse className="me-3 ms-1" size='lg' />,
   },
   {

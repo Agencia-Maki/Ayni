@@ -18,7 +18,7 @@ const confirmationData = {
 
 const SmartTable = (props) => {
   // destructuring props
-  const { headerColums, data, showModalEditBank, handleDeleteBank } = props
+  const { headerColums, data, showModalEditData, handleDeleteData } = props
   const { handleConfirmation } = useConfirmation()  
 
   return (
@@ -50,11 +50,11 @@ const SmartTable = (props) => {
         action: (item) => {
           return (
             <td>
-              <CButton size={'sm'} className='me-2' onClick={() => showModalEditBank(item)}>
+              <CButton size={'sm'} className='me-2' onClick={() => showModalEditData(item)}>
                 <FontAwesomeIcon icon={faPencil} inverse />
               </CButton>
 
-              <CButton size={'sm'} color={'danger'} onClick={() => handleConfirmation(confirmationData.title, confirmationData.text , () => handleDeleteBank(item) ,confirmationData.text_cancel)}>
+              <CButton size={'sm'} color={'danger'} onClick={() => handleConfirmation(confirmationData.title, confirmationData.text , () => handleDeleteData(item) ,confirmationData.text_cancel)}>
                 <FontAwesomeIcon icon={faTrash} inverse />
               </CButton>
             </td>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :banks
       resources :customers
       resources :customer_payment_types
+      resources :areas
     end
   end
 

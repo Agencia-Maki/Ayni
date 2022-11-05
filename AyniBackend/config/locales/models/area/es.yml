@@ -1,0 +1,29 @@
+es:
+  activerecord:
+    models:
+      area:
+        one: 'Área'
+        other: 'Áreas'
+    errors:
+      models:
+        area:
+          attributes:
+            name:
+              blank: 'es un campo obligatorio'
+            slug:
+              blank: 'es un campo obligatorio'
+      messages:
+        record_invalid: 'El área no pudo ser guardado. Por favor, corrija los errores y vuelva a intentarlo.'
+    methods:
+      area:
+        create: 'registrado de manera exitosa!'
+        update: 'actualizado de manera exitosa!'
+        destroy: 'eliminado de manera exitosa!'
+    attributes:
+      area:
+        name: 'Los Nombre'
+        slug: 'La abreviatura'
+  general_errors:
+    create: 'Ocurrió un error al registrar el área'
+    update: 'Ocurrió un error al actualizar el área'
+    destroy: 'Ocurrió un error al eliminar el área'

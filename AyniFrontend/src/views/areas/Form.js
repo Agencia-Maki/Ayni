@@ -1,45 +1,51 @@
 import React from "react"
 import {
+  CRow,
   CCol,
   CForm,
-  CFormInput
+  CFormInput,
+  CFormSelect,
 } from '@coreui/react-pro'
 
 const Modal = (props) => {
+
   const {validated, handleChange, currentData} = props
   const {formRef} = props
 
   return (
     <>
+    
       <CForm className="row g-3 needs-validation"
         noValidate
         validated={validated}
         ref={formRef}
       >
+      <CRow>
         <CCol>
           <CFormInput
             value={currentData.name}
-            name="name"
-            onChange={handleChange}
+            name='name'
             type="text"
+            onChange={handleChange}
             id="validationServer01"
-            label="Nombre del Banco"
-            feedbackInvalid="Porfavor ingrese un nombre de Banco."
+            label="Nombres"
+            feedbackInvalid="Selecione un rango de horas."
             required
           />
         </CCol>
         <CCol>
           <CFormInput
-            value={currentData.slug}
-            name="slug"
-            onChange={handleChange}
+            value={currentData.slug}  
             type="text"
+            name='slug'
+            onChange={handleChange}
             id="validationServer02"
-            label="Abreviatura"
-            feedbackInvalid="Porfavor ingrese una abreviatura de Banco (unico)."
+            label="Slug"
+            feedbackInvalid="Selecione un rango de horas."
             required
           />
         </CCol>
+      </CRow>
       </CForm>
 
     </>
