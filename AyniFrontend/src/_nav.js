@@ -12,7 +12,8 @@ import {
   faPeopleGroup,
   faNetworkWired,
   faRocket,
-  faPiggyBank
+  faPiggyBank,
+  faMoneyBillTransfer
 } from '@fortawesome/free-solid-svg-icons'
 
 import { CNavGroup, CNavGroupItems, CNavItem, CNavTitle } from '@coreui/react-pro'
@@ -130,6 +131,12 @@ const _nav = [
     name: 'Áreas y Puestos',
     to: '/areas',
     icon: <FontAwesomeIcon icon={faNetworkWired} inverse className="me-3 ms-1" size='lg' />,
+  },
+  {
+    component: CNavItem,
+    name: 'Formas de Pago',
+    to: '/formas-pago',
+    icon: <FontAwesomeIcon icon={faMoneyBillTransfer} inverse className="me-3 ms-1" size='lg' />,
   },
   {
     component: CNavItem,

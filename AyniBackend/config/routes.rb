@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :banks
       resources :customers
+      resources :customer_payment_types
     end
   end
 

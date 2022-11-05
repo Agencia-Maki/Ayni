@@ -9,6 +9,7 @@ const CotizacionE = React.lazy(() => import('./views/cotizaciones/Ejecutivo'))
 const PendientesG = React.lazy(() => import('./views/pendientes/General'))
 const DragAndDrop = React.lazy(() => import('./views/pendientes/DragAndDrop'))
 const PendientesE = React.lazy(() => import('./views/pendientes/Colaborador'))
+const FormasPago = React.lazy(() => import('./views/formaPago/FormasPago'))
 
 const routes = [
   { path: '/', exact: true, name: 'Ayni' },
@@ -19,7 +20,8 @@ const routes = [
   { path: '/cotizaciones/ejecutivos', exact: true, name: 'Cotización Ejecutivo', element: CotizacionE},
   { path: '/pendientes/general', exact: true, name: 'Ordenes General', element: PendientesG },
   { path: '/pendientes/general/gestionar', exact: true, name: 'Gestionar Pendientes', element: DragAndDrop },
-  { path: '/pendientes/ejecutivos', exact: true, name: 'Ordenes Ejecutivo', element: PendientesE}
+  { path: '/pendientes/ejecutivos', exact: true, name: 'Ordenes Ejecutivo', element: PendientesE},
+  { path: '/formas-pago', exact: true, name: 'Formas de Pago', element: FormasPago }
 ]
 
 export default routes

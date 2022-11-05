@@ -10,8 +10,8 @@ import {
 
 const ModalForm = (props) => {
 
-  const { validated, visible, Title, currentBank, typeForm } = props
-  const { setValidated, handleChange, handleInsertBank, handleUpdateBank, closeModal } = props
+  const { validated, visible, Title, currentData, typeForm } = props
+  const { setValidated, handleChange, handleInsertData, handleUpdateData, closeModal } = props
 
   const {formRef} = props
 
@@ -29,15 +29,14 @@ const ModalForm = (props) => {
             formRef={formRef}
             validated={validated}
             setValidated={setValidated}
-            handleInsertBank={handleInsertBank}
             handleChange={handleChange}
-            currentBank={currentBank}
+            currentData={currentData}
             typeForm={typeForm}
           />
 
         </CModalBody>
         <CModalFooter>
-          <CButton color="success" onClick={typeForm === "create" ? (e) => handleInsertBank(e) : (e) => handleUpdateBank(e)}>
+          <CButton color="success" onClick={typeForm === "create" ? (e) => handleInsertData(e) : (e) => handleUpdateData(e)}>
             {typeForm === "create" ? "Registrar" : "Actualizar"}
           </CButton>
           <CButton color="secondary" onClick={() => closeModal()}>
